@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportpesa Tujiamini Athletics Circuit 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== BRAND COLORS ===== */
+        :root {
+            --primary: #00B140;
+            --primary-dark: #008f33;
+            --accent: #FFD700;
+            --accent-dark: #e6c200;
+            --bg-dark: #0a1a0a;
+            --text-light: #ffffff;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:var(--bg-dark); color:var(--text-light); line-height:1.7; min-height:100vh; overflow-x:hidden; }
+        ::-webkit-scrollbar { width:8px; }
+        ::-webkit-scrollbar-track { background:var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background:linear-gradient(180deg, var(--primary), var(--accent)); border-radius:10px; }
+
+        .page { display:none; padding:20px; max-width:1400px; margin:0 auto; position:relative; z-index:1; }
+        .page.active { display:block; animation:fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+        /* ===== PAGE 1: EVENTS SECTION ===== */
+        .event-section {
+            position:relative;
+            padding:60px 20px 80px;
+            min-height:100vh;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+            background:var(--bg-dark);
+        }
+        .event-section .bg-container {
+            position:absolute;
+            inset:0;
+            z-index:0;
+            overflow:hidden;
+        }
+        .event-section .bg-container .bg-image {
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            opacity:0.30;
+            animation:zoomBackground 20s infinite alternate ease-in-out;
+        }
+        .event-section .bg-container .water-overlay {
+            position:absolute;
+            inset:0;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(0,177,64,0.06), transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(255,215,0,0.04), transparent 50%);
+            animation:waterFlow 12s ease-in-out infinite alternate;
+        }
+        .event-section .bg-container .gradient-overlay {
+            position:absolute;
+            inset:0;
+            background:linear-gradient(180deg, 
+                rgba(10,26,10,0.7) 0%, 
+                rgba(10,26,10,0.5) 30%, 
+                rgba(10,26,10,0.6) 60%, 
+                rgba(10,26,10,0.85) 100%
+            );
+        }
+        .event-section .bg-container .bg-logo {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: url('https://www.sportpesa.com/images/logo.png') center/contain no-repeat;
+            opacity: 0.06;
+            pointer-events: none;
+            animation: none;
+        }
+        @keyframes zoomBackground {
+            0% { transform:scale(1); }
+            100% { transform:scale(1.05); }
+        }
+        @keyframes waterFlow {
+            0% { opacity:0.06; transform:scale(1) rotate(0deg); }
+            50% { opacity:0.12; transform:scale(1.05) rotate(1deg); }
+            100% { opacity:0.08; transform:scale(0.95) rotate(-1deg); }
+        }
+
+        .event-section .content {
+            position:relative;
+            z-index:2;
+            width:100%;
+            max-width:1400px;
+            text-align:center;
+        }
+
+        .sponsor-header {
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:12px;
+            margin-bottom:16px;
+            flex-wrap:wrap;
+        }
+        .sponsor-header .logo {
+            max-height:60px;
+            width:auto;
+            filter:drop-shadow(0 4px 20px rgba(0,177,64,0.3));
+        }
+        .sponsor-header .brand-text {
+            font-family:'Playfair Display',serif;
+            font-size:1.8rem;
+            font-weight:800;
+            background:linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            background-clip:text;
+            letter-spacing:1px;
+        }
+        .sponsor-header .tagline {
+            font-size:0.8rem;
+            color:rgba(255,255,255,0.3);
+            letter-spacing:3px;
+            text-transform:uppercase;
+            font-weight:300;
+        }
+
+        .event-section .section-tag {
+            display:inline-block; 
+            background:linear-gradient(135deg, var(--primary), var(--accent));
+            color:#0a0a1a; 
+            padding:4px 20px; 
+            border-radius:50px;
+            font-size:0.6rem; 
+            font-weight:700; 
+            text-transform:uppercase; 
+            letter-spacing:3px;
+            margin-bottom:8px;
+        }
+        .event-section h2 {
+            font-family:'Playfair Display',serif; 
+            font-size:2rem; 
+            margin-bottom:4px;
+            text-shadow:0 2px 30px rgba(0,0,0,0.5);
+        }
+        .event-section h2 span {
+            background:linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip:text; 
+            -webkit-text-fill-color:transparent; 
+            background-clip:text;
+        }
+        .event-section .sub {
+            color:rgba(255,255,255,0.5); 
+            font-size:0.85rem; 
+            max-width:500px; 
+            margin:0 auto 30px;
+            text-shadow:0 2px 20px rgba(0,0,0,0.4);
+        }
+
+        .event-grid {
+            display:grid;
+            grid-template-columns:repeat(5, 1fr);
+            gap:16px;
+            max-width:1400px;
+            margin:0 auto;
+            width:100%;
+        }
+        .event-card {
+            background:rgba(10,26,10,0.6);
+            backdrop-filter:blur(12px);
+            -webkit-backdrop-filter:blur(12px);
+            border:1px solid rgba(255,255,255,0.06);
+            border-radius:16px;
+            padding:18px 14px 16px;
+            transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
+            cursor:pointer;
+            text-align:center;
+            position:relative;
+            overflow:hidden;
+            min-height:280px;
+            display:flex;
+            flex-direction:column;
+            justify-content:flex-start;
+            align-items:center;
+            box-shadow:0 8px 32px rgba(0,0,0,0.2);
+        }
+        .event-card::before {
+            content:'';
+            position:absolute;
+            inset:0;
+            background:linear-gradient(135deg, rgba(0,177,64,0.02), transparent 50%);
+            opacity:0;
+            transition:opacity 0.4s;
+            z-index:0;
+        }
+        .event-card:hover {
+            transform:translateY(-4px);
+            border-color:rgba(0,177,64,0.15);
+            background:rgba(10,26,10,0.75);
+            box-shadow:0 16px 48px rgba(0,0,0,0.4);
+        }
+        .event-card:hover::before { opacity:1; }
+        .event-card > * { position:relative; z-index:1; }
+        .event-card .event-org {
+            font-size:0.5rem;
+            font-weight:600;
+            color:rgba(0,177,64,0.6);
+            text-transform:uppercase;
+            letter-spacing:2px;
+            margin-bottom:2px;
+        }
+        .event-card .event-name {
+            font-family:'Playfair Display',serif;
+            font-size:0.95rem;
+            font-weight:700;
+            color:#fff;
+            margin-bottom:2px;
+            line-height:1.2;
+        }
+        .event-card .event-location {
+            font-size:0.65rem;
+            color:rgba(255,255,255,0.4);
+            margin-bottom:1px;
+        }
+        .event-card .event-date {
+            font-size:0.65rem;
+            color:rgba(255,255,255,0.4);
+            margin-bottom:4px;
+        }
+        .event-card .event-prize {
+            display:inline-block;
+            background:rgba(0,177,64,0.06);
+            border:1px solid rgba(0,177,64,0.06);
+            border-radius:20px;
+            padding:2px 10px;
+            font-size:0.5rem;
+            font-weight:600;
+            color:var(--primary);
+            margin-bottom:10px;
+        }
+        .event-card .btn-apply-event {
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:6px;
+            padding:6px 20px;
+            background:linear-gradient(135deg, var(--primary), var(--accent));
+            border:none;
+            border-radius:50px;
+            font-weight:700;
+            font-size:0.7rem;
+            color:#0a0a1a;
+            cursor:pointer;
+            transition:all 0.3s ease;
+            text-decoration:none;
+            box-shadow:0 4px 16px rgba(0,177,64,0.15);
+            width:100%;
+            max-width:160px;
+            margin-bottom:10px;
+            letter-spacing:0.5px;
+        }
+        .event-card .btn-apply-event:hover {
+            transform:scale(1.04);
+            box-shadow:0 8px 25px rgba(0,177,64,0.25);
+        }
+
+        .customer-care-section {
+            position:relative;
+            z-index:2;
+            margin-top:40px;
+            padding:16px 24px;
+            background:rgba(10,26,10,0.5);
+            backdrop-filter:blur(12px);
+            -webkit-backdrop-filter:blur(12px);
+            border:1px solid rgba(255,255,255,0.04);
+            border-radius:16px;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:16px;
+            flex-wrap:wrap;
+            transition:all 0.3s ease;
+        }
+        .customer-care-section:hover {
+            border-color:rgba(0,177,64,0.1);
+            background:rgba(10,26,10,0.6);
+        }
+        .customer-care-section .label {
+            font-size:0.75rem;
+            color:rgba(255,255,255,0.3);
+            font-weight:500;
+            letter-spacing:1px;
+        }
+        .customer-care-section .phone-link {
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            padding:8px 20px;
+            background:linear-gradient(135deg, #2ed573, #26de81);
+            border:none;
+            border-radius:50px;
+            font-weight:700;
+            font-size:1rem;
+            color:#0a0a1a;
+            text-decoration:none;
+            transition:all 0.3s ease;
+            box-shadow:0 4px 16px rgba(46,213,115,0.15);
+        }
+        .customer-care-section .phone-link:hover {
+            transform:scale(1.04);
+            box-shadow:0 8px 25px rgba(46,213,115,0.25);
+        }
+        .customer-care-section .phone-link .phone-icon { font-size:1.1rem; }
+        .customer-care-section .phone-link .phone-number { font-weight:700; letter-spacing:0.5px; }
+
+        /* ============================================================ */
+        /*  PAGE 2: APPLICATION FORM                                    */
+        /* ============================================================ */
+        .apply-section {
+            max-width:1000px;
+            margin:0 auto;
+            padding:20px 0;
+            position:relative;
+        }
+        .back-link {
+            display:inline-flex;
+            align-items:center;
+            gap:4px;
+            color:rgba(255,255,255,0.2);
+            text-decoration:none;
+            font-size:0.75rem;
+            transition:color 0.3s;
+            margin-bottom:20px;
+        }
+        .back-link:hover { color:var(--accent); }
+
+        .form-container {
+            background:rgba(255,255,255,0.02);
+            border:1px solid rgba(255,255,255,0.04);
+            border-radius:20px;
+            padding:32px 30px 30px;
+            backdrop-filter:blur(6px);
+            box-shadow:0 16px 40px rgba(0,0,0,0.12);
+            position:relative;
+            overflow:hidden;
+        }
+        .form-container .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
+        }
+        .form-container .watermark img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .form-container > * {
+            position:relative;
+            z-index:1;
+        }
+
+        .form-container .brand-badge {
+            display:inline-block;
+            background:linear-gradient(135deg, var(--primary), var(--accent));
+            color:#0a0a1a;
+            font-weight:700;
+            font-size:0.6rem;
+            padding:4px 16px;
+            border-radius:50px;
+            letter-spacing:1px;
+            text-transform:uppercase;
+            margin-bottom:8px;
+        }
+        .form-container h2 {
+            font-family:'Playfair Display',serif;
+            font-size:1.8rem;
+            font-weight:800;
+            margin-bottom:2px;
+        }
+        .form-container h2 span { color:var(--primary); }
+        .form-container .form-sub {
+            color:rgba(255,255,255,0.3);
+            margin-bottom:20px;
+            font-size:0.85rem;
+        }
+        .form-container .form-sub strong {
+            color:var(--accent);
+            font-weight:600;
+        }
+
+        .entry-toggle {
+            display:flex;
+            gap:12px;
+            margin-bottom:20px;
+            justify-content:center;
+        }
+        .entry-toggle .toggle-btn {
+            padding:10px 30px;
+            border:2px solid rgba(255,255,255,0.06);
+            border-radius:12px;
+            background:rgba(255,255,255,0.02);
+            color:rgba(255,255,255,0.3);
+            font-weight:600;
+            font-size:0.9rem;
+            cursor:pointer;
+            transition:all 0.3s ease;
+            font-family:'Inter',sans-serif;
+        }
+        .entry-toggle .toggle-btn.active {
+            border-color:var(--primary);
+            background:rgba(0,177,64,0.06);
+            color:var(--primary);
+        }
+        .entry-toggle .toggle-btn:hover {
+            border-color:rgba(0,177,64,0.2);
+            color:#fff;
+        }
+
+        .form-grid {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:16px 24px;
+        }
+        .form-group { display:flex; flex-direction:column; gap:4px; }
+        .form-group.full { grid-column:1/-1; }
+        .form-group label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .form-group input, .form-group select {
+            background:rgba(255,255,255,0.03);
+            border:1px solid rgba(255,255,255,0.06);
+            border-radius:10px;
+            padding:12px 14px;
+            color:#fff;
+            font-family:'Inter',sans-serif;
+            font-size:0.85rem;
+            transition:all 0.3s ease;
+            outline:none;
+            width:100%;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color:var(--primary);
+            background:rgba(255,255,255,0.04);
+            box-shadow:0 0 0 3px rgba(0,177,64,0.05);
+        }
+        .form-group input::placeholder { color:rgba(255,255,255,0.12); }
+        .form-group select option { background:#1a1a2e; color:#fff; }
+        .position-hint {
+            font-size:0.55rem;
+            color:rgba(255,255,255,0.12);
+            margin-top:2px;
+            font-style:italic;
+        }
+
+        .btn-submit {
+            grid-column:1/-1;
+            padding:14px 32px;
+            background:linear-gradient(135deg, var(--primary), var(--accent));
+            border:none;
+            border-radius:50px;
+            font-weight:700;
+            font-size:0.95rem;
+            color:#0a0a1a;
+            cursor:pointer;
+            transition:all 0.3s ease;
+            box-shadow:0 4px 20px rgba(0,177,64,0.1);
+            margin-top:8px;
+            width:100%;
+            max-width:320px;
+            justify-self:center;
+        }
+        .btn-submit:hover { transform:scale(1.02); box-shadow:0 8px 30px rgba(0,177,64,0.15); }
+        .btn-submit:active { transform:scale(0.97); }
+
+        .form-customer-care {
+            margin-top:20px;
+            padding:14px 20px;
+            background:rgba(10,26,10,0.3);
+            border:1px solid rgba(255,255,255,0.03);
+            border-radius:12px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:16px;
+            flex-wrap:wrap;
+        }
+        .form-customer-care .label {
+            font-size:0.7rem;
+            color:rgba(255,255,255,0.25);
+            font-weight:500;
+            letter-spacing:1px;
+        }
+        .form-customer-care .phone-link {
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            padding:6px 18px;
+            background:linear-gradient(135deg, #2ed573, #26de81);
+            border:none;
+            border-radius:50px;
+            font-weight:700;
+            font-size:0.9rem;
+            color:#0a0a1a;
+            text-decoration:none;
+            transition:all 0.3s ease;
+            box-shadow:0 4px 16px rgba(46,213,115,0.1);
+        }
+        .form-customer-care .phone-link:hover {
+            transform:scale(1.04);
+            box-shadow:0 8px 25px rgba(46,213,115,0.2);
+        }
+
+        .form-footer-note {
+            margin-top:16px;
+            text-align:center;
+            font-size:0.65rem;
+            color:rgba(255,255,255,0.1);
+            letter-spacing:0.5px;
+        }
+        .form-footer-note .brand {
+            color:var(--primary);
+            font-weight:600;
+        }
+        .form-footer-note .accent {
+            color:var(--accent);
+            font-weight:600;
+        }
+
+        /* ============================================================ */
+        /*  PAGE 3: CONFIRMATION & PAYMENT (STK UNAVAILABLE)            */
+        /* ============================================================ */
+        .confirmation-section { max-width:1000px; margin:0 auto; padding:20px 0; }
+        .confirmation-card {
+            background:rgba(255,255,255,0.02);
+            border:1px solid rgba(0,177,64,0.08);
+            border-radius:20px;
+            padding:32px 28px 28px;
+            backdrop-filter:blur(10px);
+            text-align:center;
+            margin-bottom:24px;
+            box-shadow:0 16px 40px rgba(0,0,0,0.15);
+        }
+        .confirmation-card .checkmark { font-size:3.5rem; display:block; margin-bottom:6px; }
+        .confirmation-card h2 { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--primary); margin-bottom:4px; }
+        .confirmation-card p { color:rgba(255,255,255,0.45); font-size:0.9rem; max-width:500px; margin:0 auto; }
+        .confirmation-card p strong { color:#fff; }
+
+        .confirmation-customer-care {
+            background:rgba(255,215,0,0.02);
+            border:1px solid rgba(255,215,0,0.04);
+            border-radius:18px;
+            padding:18px 24px 20px;
+            margin-bottom:24px;
+            backdrop-filter:blur(8px);
+            display:flex;
+            align-items:center;
+            gap:20px;
+            flex-wrap:wrap;
+            transition:all 0.3s ease;
+        }
+        .confirmation-customer-care .agent-image {
+            width:70px; height:70px; border-radius:50%; flex-shrink:0;
+            border:3px solid rgba(0,177,64,0.1);
+            box-shadow:0 4px 20px rgba(0,0,0,0.15);
+            transition:all 0.3s ease;
+            background:linear-gradient(135deg, #1a1a2e, #2a2a4a);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:2.2rem;
+            position:relative;
+            overflow:hidden;
+        }
+        .confirmation-customer-care .agent-image img { width:100%; height:100%; object-fit:cover; }
+        .confirmation-customer-care .agent-image .status-dot {
+            position:absolute; bottom:4px; right:4px; width:12px; height:12px;
+            background:#2ed573; border-radius:50%; border:2px solid #0a0a1a;
+            animation:pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform:scale(1); opacity:1; }
+            50% { transform:scale(1.3); opacity:0.7; }
+            100% { transform:scale(1); opacity:1; }
+        }
+        .confirmation-customer-care .agent-name { color:var(--primary); font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; }
+        .confirmation-customer-care .agent-title { color:rgba(255,255,255,0.25); font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:2px; }
+        .confirmation-customer-care .agent-bio { color:rgba(255,255,255,0.4); font-size:0.8rem; line-height:1.4; margin-top:2px; }
+        .confirmation-customer-care .btn-call {
+            display:inline-flex; align-items:center; gap:6px;
+            padding:10px 22px; background:linear-gradient(135deg, #2ed573, #26de81);
+            border:none; border-radius:50px; font-weight:600; font-size:0.85rem;
+            color:#0a0a1a; cursor:pointer; transition:all 0.3s ease;
+            box-shadow:0 4px 16px rgba(46,213,115,0.1); text-decoration:none;
+        }
+        .confirmation-customer-care .btn-call:hover { transform:scale(1.03); box-shadow:0 8px 25px rgba(46,213,115,0.15); }
+
+        /* STK Push Section - Disabled */
+        .stk-section {
+            background:rgba(255,71,87,0.02);
+            border:1px solid rgba(255,71,87,0.06);
+            border-radius:18px;
+            padding:22px 26px 26px;
+            backdrop-filter:blur(8px);
+            margin-bottom:24px;
+            opacity:0.7;
+        }
+        .stk-section .stk-header {
+            display:flex;
+            align-items:center;
+            gap:10px;
+            margin-bottom:12px;
+        }
+        .stk-section .stk-header .stk-icon {
+            font-size:1.5rem;
+            background:rgba(255,71,87,0.06);
+            padding:8px;
+            border-radius:12px;
+            border:1px solid rgba(255,71,87,0.06);
+        }
+        .stk-section .stk-header h3 {
+            font-family:'Playfair Display',serif;
+            font-size:1.2rem;
+            color:#ff4757;
+        }
+        .stk-section .stk-sub {
+            color:rgba(255,255,255,0.5);
+            font-size:0.8rem;
+            margin-bottom:14px;
+        }
+        .stk-section .stk-sub strong { color:#ff4757; }
+
+        .btn-pay-unavailable {
+            background:rgba(255,71,87,0.1);
+            border:1px solid rgba(255,71,87,0.2);
+            color:#ff4757;
+            box-shadow:none;
+            cursor:pointer;
+            width:100%;
+            max-width:320px;
+            margin:0 auto;
+            padding:12px 32px;
+            border-radius:50px;
+            font-weight:700;
+            font-size:0.95rem;
+            font-family:'Inter',sans-serif;
+            display:block;
+            text-align:center;
+            transition:all 0.3s ease;
+        }
+        .btn-pay-unavailable:hover {
+            background:rgba(255,71,87,0.15);
+            border-color:rgba(255,71,87,0.3);
+        }
+
+        .payment-section { background:rgba(255,215,0,0.02); border:1px solid rgba(255,215,0,0.04); border-radius:18px; padding:22px 26px 26px; backdrop-filter:blur(8px); margin-bottom:24px; }
+        .payment-section .payment-header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px; }
+        .payment-section .payment-header h3 { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--primary); }
+        .payment-section .payment-header .total-fee { font-size:1.4rem; font-weight:800; color:#fff; background:rgba(0,177,64,0.06); padding:4px 18px; border-radius:50px; border:1px solid rgba(0,177,64,0.08); }
+        .payment-details { display:grid; grid-template-columns:1fr 1fr; gap:10px 20px; margin-bottom:12px; }
+        .payment-details .pay-item { display:flex; flex-direction:column; gap:2px; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.02); }
+        .payment-details .pay-item .label { font-size:0.5rem; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,0.2); }
+        .payment-details .pay-item .value { font-size:0.8rem; font-weight:500; color:#fff; }
+        .payment-details .pay-item.full { grid-column:1/-1; }
+        .payment-options { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:8px; margin:12px 0 12px; }
+        .payment-option { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04); border-radius:10px; padding:10px 14px; cursor:pointer; transition:all 0.3s ease; }
+        .payment-option:hover { background:rgba(255,255,255,0.03); border-color:rgba(0,177,64,0.1); }
+        .payment-option.selected { border-color:var(--primary); background:rgba(0,177,64,0.03); }
+        .payment-option input[type="radio"] { accent-color:var(--primary); width:14px; height:14px; cursor:pointer; flex-shrink:0; }
+        .payment-option .pay-details .pay-name { font-weight:600; font-size:0.8rem; color:#fff; }
+        .payment-option .pay-details .pay-desc { font-size:0.55rem; color:rgba(255,255,255,0.2); }
+        .payment-option.disabled { opacity:0.4; cursor:default; }
+        .payment-instructions { background:rgba(255,255,255,0.02); border-radius:12px; padding:14px 18px; border-left:3px solid var(--primary); margin:12px 0; }
+        .payment-instructions h4 { color:var(--primary); font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:4px; }
+        .payment-instructions .pay-method { display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.02); }
+        .payment-instructions .pay-method:last-child { border-bottom:none; }
+        .payment-instructions .pay-method .pay-icon { font-size:1.2rem; width:28px; text-align:center; }
+        .payment-instructions .pay-method .pay-info .pay-name { font-weight:600; color:#fff; font-size:0.8rem; }
+        .payment-instructions .pay-method .pay-info .pay-detail { font-size:0.7rem; color:rgba(255,255,255,0.35); }
+        .payment-instructions .pay-method .pay-info .pay-detail strong { color:var(--primary); }
+        .payment-note { margin-top:12px; padding:12px 16px; background:rgba(46,213,115,0.02); border-radius:10px; border:1px solid rgba(46,213,115,0.04); display:flex; align-items:flex-start; gap:10px; }
+        .payment-note .note-icon { font-size:1rem; flex-shrink:0; margin-top:1px; }
+        .payment-note .note-content { font-size:0.8rem; color:rgba(255,255,255,0.45); line-height:1.5; }
+        .payment-note .note-content strong { color:var(--primary); }
+        .payment-note .note-content .highlight-text { color:#2ed573; font-weight:500; }
+
+        .pay-manual-section { background:rgba(255,215,0,0.02); border:1px solid rgba(255,215,0,0.06); border-radius:18px; padding:22px 26px 26px; backdrop-filter:blur(8px); margin-bottom:24px; }
+        .pay-manual-section .manual-header { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+        .pay-manual-section .manual-header .manual-icon { font-size:1.5rem; background:rgba(255,215,0,0.06); padding:8px; border-radius:12px; border:1px solid rgba(255,215,0,0.06); }
+        .pay-manual-section .manual-header h3 { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--accent); }
+        .pay-manual-section .manual-sub { color:rgba(255,255,255,0.3); font-size:0.8rem; margin-bottom:14px; }
+        .pay-manual-section .till-details { background:rgba(255,255,255,0.02); border-radius:12px; padding:16px 20px; border:1px solid rgba(255,215,0,0.06); }
+        .pay-manual-section .till-details .till-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03); }
+        .pay-manual-section .till-details .till-row:last-child { border-bottom:none; }
+        .pay-manual-section .till-details .till-label { color:rgba(255,255,255,0.35); font-size:0.75rem; }
+        .pay-manual-section .till-details .till-value { color:#fff; font-weight:600; font-size:0.95rem; }
+        .pay-manual-section .till-details .till-value .highlight { color:var(--accent); font-weight:700; font-size:1.1rem; letter-spacing:1px; }
+        .pay-manual-section .till-details .copy-btn { background:rgba(255,215,0,0.06); border:1px solid rgba(255,215,0,0.06); border-radius:8px; padding:4px 12px; color:var(--accent); font-size:0.65rem; cursor:pointer; transition:all 0.3s ease; font-family:'Inter',sans-serif; }
+        .pay-manual-section .till-details .copy-btn:hover { background:rgba(255,215,0,0.1); border-color:rgba(255,215,0,0.15); }
+        .pay-manual-section .manual-note { margin-top:12px; padding:10px 14px; background:rgba(255,215,0,0.02); border-radius:8px; border-left:3px solid var(--accent); font-size:0.75rem; color:rgba(255,255,255,0.4); line-height:1.6; }
+        .pay-manual-section .manual-note strong { color:#fff; }
+        .pay-manual-section .manual-note .highlight-text { color:var(--accent); font-weight:600; }
+
+        .summary-section { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); border-radius:18px; padding:24px 26px 26px; backdrop-filter:blur(8px); margin-bottom:24px; }
+        .summary-section h3 { font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:14px; }
+        .summary-section h3 span { color:var(--primary); }
+        .summary-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px 20px; }
+        .summary-item { display:flex; flex-direction:column; gap:2px; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.02); }
+        .summary-item .label { font-size:0.55rem; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,0.2); }
+        .summary-item .value { font-size:0.8rem; font-weight:500; color:#fff; }
+        .summary-item.full { grid-column:1/-1; }
+
+        .next-steps { background:rgba(255,215,0,0.02); border:1px solid rgba(255,215,0,0.03); border-radius:16px; padding:20px 24px; margin-bottom:24px; backdrop-filter:blur(4px); }
+        .next-steps h4 { color:var(--primary); font-size:0.7rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:8px; }
+        .next-steps ul { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:4px 16px; }
+        .next-steps ul li { display:flex; align-items:center; gap:6px; font-size:0.8rem; color:rgba(255,255,255,0.5); padding:3px 0; }
+        .next-steps ul li .step-num { display:inline-flex; align-items:center; justify-content:center; background:rgba(0,177,64,0.06); border:1px solid rgba(0,177,64,0.06); border-radius:50%; width:20px; height:20px; font-size:0.55rem; font-weight:700; color:var(--primary); flex-shrink:0; }
+
+        .btn-group { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:12px; }
+        .btn-primary { display:inline-flex; align-items:center; gap:6px; padding:12px 28px; background:linear-gradient(135deg, var(--primary), var(--accent)); border:none; border-radius:50px; font-weight:700; font-size:0.9rem; color:#0a0a1a; cursor:pointer; transition:all 0.3s ease; text-decoration:none; box-shadow:0 4px 16px rgba(0,177,64,0.1); }
+        .btn-primary:hover { transform:scale(1.02); box-shadow:0 8px 25px rgba(0,177,64,0.15); }
+        .btn-secondary { display:inline-flex; align-items:center; gap:6px; padding:12px 28px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.04); border-radius:50px; font-weight:600; font-size:0.9rem; color:#fff; cursor:pointer; transition:all 0.3s ease; text-decoration:none; }
+        .btn-secondary:hover { background:rgba(255,255,255,0.05); border-color:rgba(255,215,0,0.08); }
+
+        .sponsor-footer {
+            margin-top:40px;
+            padding:20px 20px 10px;
+            border-top:1px solid rgba(255,255,255,0.03);
+            text-align:center;
+            color:rgba(255,255,255,0.15);
+            font-size:0.7rem;
+            letter-spacing:1px;
+        }
+        .sponsor-footer .brand { color:var(--primary); font-weight:700; }
+        .sponsor-footer .accent { color:var(--accent); font-weight:700; }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            position:fixed; inset:0; background:rgba(0,0,0,0.75);
+            backdrop-filter:blur(10px); z-index:999;
+            display:flex; align-items:center; justify-content:center;
+            opacity:0; visibility:hidden; transition:all 0.4s ease;
+            padding:20px;
+        }
+        .modal-overlay.active { opacity:1; visibility:visible; }
+        .modal-card {
+            background:linear-gradient(145deg, #1a1a2e, #2a2a4a);
+            border:1px solid rgba(0,177,64,0.1);
+            border-radius:24px;
+            max-width:580px; width:100%;
+            padding:32px 28px 28px;
+            box-shadow:0 40px 80px rgba(0,0,0,0.5);
+            transform:scale(0.95) translateY(20px);
+            transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
+            max-height:90vh;
+            overflow-y:auto;
+            position:relative;
+        }
+        .modal-overlay.active .modal-card { transform:scale(1) translateY(0); }
+        .modal-card .close-modal {
+            position:absolute; top:12px; right:16px;
+            background:none; border:none;
+            color:rgba(255,255,255,0.2);
+            font-size:1.6rem;
+            cursor:pointer;
+            transition:color 0.3s;
+        }
+        .modal-card .close-modal:hover { color:var(--primary); }
+        .modal-card .modal-org {
+            font-size:0.6rem;
+            font-weight:600;
+            color:rgba(0,177,64,0.5);
+            text-transform:uppercase;
+            letter-spacing:2px;
+            margin-bottom:4px;
+            text-align:center;
+        }
+        .modal-card h3 {
+            font-family:'Playfair Display',serif;
+            font-size:1.4rem;
+            color:var(--primary);
+            margin-bottom:4px;
+            text-align:center;
+        }
+        .modal-card .modal-meta {
+            display:flex; flex-wrap:wrap; gap:8px 16px; 
+            font-size:0.8rem; color:rgba(255,255,255,0.4);
+            margin:6px 0 12px;
+            justify-content:center;
+        }
+        .modal-card .modal-desc {
+            color:rgba(255,255,255,0.65);
+            font-size:0.9rem;
+            line-height:1.7;
+            margin:10px 0 12px;
+            text-align:left;
+        }
+        .modal-card .modal-prize {
+            background:rgba(0,177,64,0.03);
+            border-radius:12px;
+            padding:12px 16px;
+            border-left:3px solid var(--primary);
+            margin:10px 0 12px;
+            text-align:left;
+        }
+        .modal-card .modal-prize h4 { color:var(--primary); font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:2px; }
+        .modal-card .modal-prize p { color:rgba(255,255,255,0.6); font-size:0.85rem; line-height:1.5; }
+        .modal-card .modal-sponsorship {
+            background:rgba(0,177,64,0.03);
+            border-radius:12px;
+            padding:12px 16px;
+            border-left:3px solid var(--primary);
+            margin:10px 0 12px;
+            text-align:left;
+        }
+        .modal-card .modal-sponsorship h4 { color:var(--primary); font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:2px; }
+        .modal-card .modal-sponsorship p { color:rgba(255,255,255,0.6); font-size:0.85rem; line-height:1.5; }
+        .modal-card .modal-requirements {
+            background:rgba(255,255,255,0.02);
+            border-radius:12px;
+            padding:12px 16px;
+            margin:10px 0 16px;
+            border-left:3px solid var(--primary);
+            text-align:left;
+        }
+        .modal-card .modal-requirements h4 { color:var(--primary); font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+        .modal-card .modal-requirements ul { list-style:none; padding:0; }
+        .modal-card .modal-requirements ul li { padding:3px 0; padding-left:18px; position:relative; font-size:0.8rem; color:rgba(255,255,255,0.6); }
+        .modal-card .modal-requirements ul li::before { content:'▹'; position:absolute; left:0; color:var(--primary); }
+        .modal-card .btn-apply-modal {
+            display:inline-flex; align-items:center; justify-content:center; gap:8px;
+            width:100%; padding:12px;
+            background:linear-gradient(135deg, var(--primary), var(--accent));
+            border:none; border-radius:50px;
+            font-weight:700; font-size:0.95rem;
+            color:#0a0a1a; cursor:pointer;
+            transition:all 0.3s;
+            box-shadow:0 4px 20px rgba(0,177,64,0.1);
+        }
+        .modal-card .btn-apply-modal:hover { transform:scale(1.02); box-shadow:0 8px 30px rgba(0,177,64,0.15); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width:1200px) { .event-grid { grid-template-columns:repeat(3, 1fr); } }
+        @media (max-width:768px) {
+            .event-grid { grid-template-columns:repeat(2, 1fr); }
+            .sponsor-header .brand-text { font-size:1.4rem; }
+            .sponsor-header .logo { max-height:45px; }
+            .event-section { padding:40px 16px 60px; }
+            .event-card { min-height:240px; padding:14px 10px; }
+            .customer-care-section { width:100%; padding:14px 18px; flex-direction:column; gap:10px; }
+            .customer-care-section .phone-link { width:100%; justify-content:center; font-size:0.9rem; padding:10px 16px; }
+            .form-grid { grid-template-columns:1fr; }
+            .btn-submit { max-width:100%; }
+            .entry-toggle .toggle-btn { padding:8px 20px; font-size:0.8rem; }
+            .form-customer-care { flex-direction:column; gap:10px; padding:12px 16px; }
+            .form-customer-care .phone-link { width:100%; justify-content:center; }
+            .payment-details { grid-template-columns:1fr; }
+            .payment-options { grid-template-columns:1fr 1fr; }
+            .summary-grid { grid-template-columns:1fr; }
+            .next-steps ul { grid-template-columns:1fr; }
+            .confirmation-customer-care { flex-direction:column; text-align:center; padding:18px 16px; }
+            .confirmation-customer-care .call-actions { justify-content:center; }
+            .confirmation-customer-care .btn-call { width:100%; justify-content:center; }
+            .pay-manual-section .till-details .till-row { flex-direction:column; align-items:flex-start; gap:4px; }
+            .form-container .watermark { width:90%; opacity:0.03; }
+        }
+        @media (max-width:480px) {
+            .event-grid { grid-template-columns:1fr; max-width:400px; margin:0 auto; }
+            .event-card { min-height:200px; }
+            .event-section h2 { font-size:1.5rem; }
+            .sponsor-header .brand-text { font-size:1.2rem; }
+            .sponsor-header .logo { max-height:35px; }
+            .customer-care-section .label { font-size:0.65rem; }
+            .customer-care-section .phone-link { font-size:0.85rem; padding:8px 14px; }
+            .form-container { padding:18px 16px; }
+            .form-container h2 { font-size:1.3rem; }
+            .entry-toggle { flex-direction:column; align-items:center; gap:8px; }
+            .entry-toggle .toggle-btn { width:100%; max-width:200px; }
+            .payment-options { grid-template-columns:1fr; }
+            .payment-section { padding:14px; }
+            .summary-section { padding:14px; }
+            .payment-note { flex-direction:column; }
+            .confirmation-card { padding:22px 16px 20px; }
+            .confirmation-card h2 { font-size:1.4rem; }
+            .confirmation-customer-care .agent-image { width:60px; height:60px; font-size:1.8rem; }
+            .pay-manual-section { padding:16px; }
+            .pay-manual-section .manual-header h3 { font-size:1rem; }
+            .sponsor-footer { font-size:0.6rem; }
+            .form-container .watermark { width:100%; opacity:0.02; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- PAGE 1: EVENTS                                               -->
+    <!-- ============================================================ -->
+    <div id="page1" class="page active">
+        <section class="event-section">
+            <div class="bg-container">
+                <img src="https://images.unsplash.com/photo-1536970257705-36c9e28bb56b?w=1920&h=1080&fit=crop" alt="Athlete running" class="bg-image">
+                <div class="water-overlay"></div>
+                <div class="gradient-overlay"></div>
+                <div class="bg-logo"></div>
+            </div>
+            <div class="content">
+                <div class="sponsor-header">
+                    <img src="https://www.sportpesa.com/images/logo.png" alt="Sportpesa Tujiamini" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span style="display:none; font-size:1.6rem; font-weight:800; background:linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">SPORTPESA</span>
+                    <span class="brand-text">Tujiamini</span>
+                    <span class="tagline">| Official Sponsor</span>
+                </div>
+                <div class="section-tag">Choose Your Event</div>
+                <h2>Kenya Athletics <span>Circuit 2026</span></h2>
+                <p class="sub">Powered by Sportpesa Tujiamini – Tap to view details and apply for sponsorship</p>
+                <div class="event-grid" id="eventGrid"></div>
+                <div class="customer-care-section">
+                    <span class="label">📞 Need Help?</span>
+                    <a href="tel:+254754114665" class="phone-link">
+                        <span class="phone-icon">📱</span>
+                        <span class="phone-number">+254 754 114 665</span>
+                    </a>
+                </div>
+                <div class="sponsor-footer">
+                    Proudly sponsored by <span class="brand">Sportpesa</span> <span class="accent">Tujiamini</span> • Empowering Kenyan Athletics
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PAGE 2: APPLICATION FORM                                     -->
+    <!-- ============================================================ -->
+    <div id="page2" class="page">
+        <div class="apply-section">
+            <a href="#" class="back-link" onclick="goToPage('page1'); return false;">← Back to events</a>
+
+            <div class="form-container">
+                <div class="watermark">
+                    <img 
+                        src="https://www.sportpesa.com/images/logo.png" 
+                        alt="Sportpesa Tujiamini" 
+                        onerror="this.style.display='none'"
+                    >
+                </div>
+
+                <span class="brand-badge">⚡ Sportpesa Tujiamini Official</span>
+                <h2>Apply for <span>Sponsorship</span></h2>
+                <p class="form-sub">Complete the form below. <strong>All fields marked * are required.</strong></p>
+
+                <div class="entry-toggle">
+                    <button class="toggle-btn active" id="individualToggle" onclick="switchForm('individual')">👤 Individual</button>
+                    <button class="toggle-btn" id="teamToggle" onclick="switchForm('team')">👥 Team</button>
+                </div>
+
+                <!-- Individual Form -->
+                <form id="individualForm" onsubmit="submitApplication(event, 'individual')">
+                    <div class="form-grid">
+                        <div class="form-group"><label for="indFullName">Full Name *</label><input type="text" id="indFullName" placeholder="e.g. Eliud Kipchoge" required /></div>
+                        <div class="form-group"><label for="indEmail">Email Address *</label><input type="email" id="indEmail" placeholder="athlete@example.com" required /></div>
+                        <div class="form-group"><label for="indPhone">Phone Number *</label><input type="tel" id="indPhone" placeholder="+254 7XX XXX XXX" required /></div>
+                        <div class="form-group"><label for="indDob">Date of Birth *</label><input type="date" id="indDob" required /></div>
+                        <div class="form-group"><label for="indNationality">Nationality *</label><input type="text" id="indNationality" placeholder="e.g. Kenyan" required /></div>
+                        <div class="form-group"><label for="indCounty">County *</label><input type="text" id="indCounty" placeholder="e.g. Nandi" required /></div>
+                        <div class="form-group"><label for="indGender">Gender</label><select id="indGender"><option value="">Select</option><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option><option value="Prefer not to say">Prefer not to say</option></select></div>
+
+                        <div class="form-group full"><label for="indPosition">Athletics Discipline *</label>
+                            <select id="indPosition">
+                                <option value="">Select discipline</option>
+                                <option value="Marathon">Marathon</option>
+                                <option value="Half Marathon">Half Marathon</option>
+                                <option value="10KM">10KM</option>
+                                <option value="5KM">5KM</option>
+                                <option value="Cross Country">Cross Country</option>
+                                <option value="Steeplechase">Steeplechase</option>
+                                <option value="5000M">5000M</option>
+                                <option value="10000M">10000M</option>
+                                <option value="1500M">1500M</option>
+                                <option value="800M">800M</option>
+                                <option value="400M">400M</option>
+                                <option value="200M">200M</option>
+                                <option value="100M">100M</option>
+                                <option value="Hurdles">Hurdles</option>
+                                <option value="Relay">Relay</option>
+                                <option value="Trail Run">Trail Run</option>
+                            </select>
+                            <div class="position-hint">Select your primary athletics discipline</div>
+                        </div>
+                        <div class="form-group"><label for="indAgeCategory">Age Category *</label><select id="indAgeCategory"><option value="">Select category</option><option value="Under 14">Under 14</option><option value="Under 16">Under 16</option><option value="Under 18">Under 18</option><option value="Under 20">Under 20</option><option value="Under 23">Under 23</option><option value="Open">Open</option><option value="Masters (30+)">Masters (30+)</option><option value="Masters (40+)">Masters (40+)</option></select></div>
+                        <div class="form-group"><label for="indSponsorshipAmount">Desired Sponsorship Amount (Ksh) *</label><input type="number" id="indSponsorshipAmount" placeholder="e.g. 50000" min="1000" step="1000" required /></div>
+
+                        <button type="submit" class="btn-submit">✔ Submit Individual Application</button>
+                    </div>
+                </form>
+
+                <!-- Team Form -->
+                <form id="teamForm" onsubmit="submitApplication(event, 'team')" style="display:none;">
+                    <div class="form-grid">
+                        <div class="form-group"><label for="teamFullName">Team Captain Name *</label><input type="text" id="teamFullName" placeholder="e.g. Eliud Kipchoge" required /></div>
+                        <div class="form-group"><label for="teamEmail">Email Address *</label><input type="email" id="teamEmail" placeholder="captain@example.com" required /></div>
+                        <div class="form-group"><label for="teamPhone">Phone Number *</label><input type="tel" id="teamPhone" placeholder="+254 7XX XXX XXX" required /></div>
+                        <div class="form-group"><label for="teamDob">Captain's Date of Birth *</label><input type="date" id="teamDob" required /></div>
+                        <div class="form-group"><label for="teamNationality">Nationality *</label><input type="text" id="teamNationality" placeholder="e.g. Kenyan" required /></div>
+                        <div class="form-group"><label for="teamCounty">County *</label><input type="text" id="teamCounty" placeholder="e.g. Nandi" required /></div>
+                        <div class="form-group"><label for="teamGender">Gender</label><select id="teamGender"><option value="">Select</option><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option><option value="Prefer not to say">Prefer not to say</option></select></div>
+
+                        <div class="form-group full"><label for="teamName">Team Name *</label><input type="text" id="teamName" placeholder="e.g. Kaptagat Runners" required /></div>
+                        <div class="form-group"><label for="teamMembers">Number of Team Members *</label><input type="number" id="teamMembers" placeholder="e.g. 4" min="2" step="1" required /></div>
+                        <div class="form-group"><label for="teamPosition">Primary Discipline *</label>
+                            <select id="teamPosition">
+                                <option value="">Select discipline</option>
+                                <option value="Marathon">Marathon</option>
+                                <option value="Half Marathon">Half Marathon</option>
+                                <option value="10KM">10KM</option>
+                                <option value="5KM">5KM</option>
+                                <option value="Cross Country">Cross Country</option>
+                                <option value="Steeplechase">Steeplechase</option>
+                                <option value="5000M">5000M</option>
+                                <option value="10000M">10000M</option>
+                                <option value="1500M">1500M</option>
+                                <option value="800M">800M</option>
+                                <option value="400M">400M</option>
+                                <option value="200M">200M</option>
+                                <option value="100M">100M</option>
+                                <option value="Hurdles">Hurdles</option>
+                                <option value="Relay">Relay</option>
+                                <option value="Trail Run">Trail Run</option>
+                            </select>
+                            <div class="position-hint">Team's primary athletics discipline</div>
+                        </div>
+                        <div class="form-group"><label for="teamAgeCategory">Team Age Category *</label><select id="teamAgeCategory"><option value="">Select category</option><option value="Under 14">Under 14</option><option value="Under 16">Under 16</option><option value="Under 18">Under 18</option><option value="Under 20">Under 20</option><option value="Under 23">Under 23</option><option value="Open">Open</option><option value="Masters (30+)">Masters (30+)</option><option value="Masters (40+)">Masters (40+)</option></select></div>
+                        <div class="form-group"><label for="teamSponsorshipAmount">Desired Sponsorship Amount (Ksh) *</label><input type="number" id="teamSponsorshipAmount" placeholder="e.g. 50000" min="1000" step="1000" required /></div>
+
+                        <button type="submit" class="btn-submit">✔ Submit Team Application</button>
+                    </div>
+                </form>
+
+                <div class="form-customer-care">
+                    <span class="label">📞 Need help with your application?</span>
+                    <a href="tel:+254754114665" class="phone-link">
+                        <span class="phone-icon">📱</span>
+                        <span class="phone-number">+254 754 114 665</span>
+                    </a>
+                </div>
+                <div class="form-footer-note">
+                    This application is officially powered by <span class="brand">Sportpesa</span> <span class="accent">Tujiamini</span> • All information is confidential.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PAGE 3: CONFIRMATION & PAYMENT (STK UNAVAILABLE)             -->
+    <!-- ============================================================ -->
+    <div id="page3" class="page">
+        <div class="confirmation-section">
+            <div class="confirmation-card">
+                <span class="checkmark">🎉</span>
+                <h2>Application Submitted!</h2>
+                <p>Thank you for applying. Our team will review your application and contact you within <strong>48 hours</strong> after payment confirmation.</p>
+            </div>
+
+            <div class="confirmation-customer-care">
+                <div class="agent-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" alt="Mr. Adams">
+                    <span class="status-dot"></span>
+                </div>
+                <div class="agent-info">
+                    <div class="agent-title">👤 Customer Care</div>
+                    <div class="agent-name">Mr. Adams</div>
+                    <div class="agent-bio">Your dedicated sponsorship advisor. I'm here to assist you with any questions about your application, payment, or sponsorship process.</div>
+                </div>
+                <div class="call-actions">
+                    <a href="tel:+254754114665" class="btn-call"><span class="phone-icon">📞</span> Call Mr. Adams</a>
+                </div>
+            </div>
+
+            <!-- ===== STK PUSH SECTION - DISABLED ===== -->
+            <div class="stk-section">
+                <div class="stk-header">
+                    <span class="stk-icon">📱</span>
+                    <h3>M-PESA STK Push</h3>
+                </div>
+                <p class="stk-sub">STK Push is currently <strong>unavailable</strong>. Please use the manual payment option below.</p>
+
+                <div style="text-align:center; margin-top:12px;">
+                    <button onclick="showSTKUnavailable()" class="btn-pay-unavailable">
+                        ⚠️ Pay Now (Unavailable)
+                    </button>
+                </div>
+            </div>
+
+            <!-- ===== PAY MANUALLY SECTION ===== -->
+            <div class="pay-manual-section">
+                <div class="manual-header">
+                    <span class="manual-icon">🏦</span>
+                    <h3>Pay Manually</h3>
+                </div>
+                <p class="manual-sub">Use the details below to complete your payment manually.</p>
+                
+                <div class="till-details">
+                    <div class="till-row">
+                        <span class="till-label">💳 Till Number</span>
+                        <span class="till-value"><span class="highlight">1637256</span></span>
+                    </div>
+                    <div class="till-row">
+                        <span class="till-label">📋 Account Reference</span>
+                        <span class="till-value">SPONSORSHIP</span>
+                    </div>
+                    <div class="till-row" style="border-bottom:none; padding-top:10px; justify-content:flex-end; gap:10px;">
+                        <button class="copy-btn" onclick="copyTillNumber()">📋 Copy Till Number</button>
+                    </div>
+                </div>
+                
+                <div class="manual-note">
+                    💡 <strong>Instructions:</strong> Go to M-PESA, select <strong>Lipa Na M-PESA</strong>, choose <strong>Buy goods and services</strong>, enter <strong>TILL NO. <span class="highlight-text">1637256</span></strong>, enter the amount, and use <strong>SPONSORSHIP</strong> as the account reference.
+                </div>
+            </div>
+
+            <!-- ===== ALTERNATIVE PAYMENT SECTION (Optional) ===== -->
+            <div class="payment-section">
+                <div class="payment-header">
+                    <h3>💳 Alternative Payment</h3>
+                    <div class="total-fee" id="confirmFee">Ksh 1,000</div>
+                </div>
+                <div class="payment-details">
+                    <div class="pay-item"><span class="label">Entry Type</span><span class="value" id="confirmEntryType">Individual</span></div>
+                    <div class="pay-item"><span class="label">Fee Breakdown</span><span class="value" id="confirmBreakdown">Ksh 1,000 per person</span></div>
+                    <div class="pay-item full"><span class="label">Payment Status</span><span class="value" style="color:#FBBF24;">⏳ Awaiting Payment</span></div>
+                </div>
+
+                <div style="margin:12px 0 4px;">
+                    <p style="color:rgba(255,255,255,0.2); font-size:0.65rem; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:8px;">Select Payment Method</p>
+                    <div class="payment-options">
+                        <label class="payment-option selected"><input type="radio" name="paymentMethod" value="Safaricom M-PESA" checked /><div class="pay-details"><span class="pay-name">📱 Safaricom M-PESA</span><span class="pay-desc">Active</span></div></label>
+                        <label class="payment-option"><input type="radio" name="paymentMethod" value="Airtel Money" /><div class="pay-details"><span class="pay-name">📲 Airtel Money</span><span class="pay-desc">Active</span></div></label>
+                        <label class="payment-option disabled"><input type="radio" name="paymentMethod" value="Card Payment" disabled /><div class="pay-details"><span class="pay-name">💳 Card Payment</span><span class="pay-desc">Coming soon</span></div></label>
+                        <label class="payment-option disabled"><input type="radio" name="paymentMethod" value="PayPal" disabled /><div class="pay-details"><span class="pay-name">🅿️ PayPal</span><span class="pay-desc">Coming soon</span></div></label>
+                    </div>
+                </div>
+
+                <div class="payment-instructions">
+                    <h4>📌 Payment Instructions</h4>
+                    <div class="pay-method">
+                        <span class="pay-icon">📱</span>
+                        <div class="pay-info">
+                            <span class="pay-name">Safaricom M-PESA</span>
+                            <span class="pay-detail">Pay <strong>Ksh <span id="mpesaAmount">1,000</span></strong> to</span>
+                            <span class="pay-detail"><strong>Paybill/Till: 1637256</strong></span>
+                            <span class="pay-detail">Account: <strong>SPONSORSHIP</strong></span>
+                        </div>
+                    </div>
+                    <div class="pay-method">
+                        <span class="pay-icon">📲</span>
+                        <div class="pay-info">
+                            <span class="pay-name">Airtel Money</span>
+                            <span class="pay-detail">Pay <strong>Ksh <span id="airtelAmount">1,000</span></strong> to</span>
+                            <span class="pay-detail"><strong>Paybill/Till: 1637256</strong></span>
+                            <span class="pay-detail">Account: <strong>SPONSORSHIP</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-note">
+                    <span class="note-icon">📞</span>
+                    <div class="note-content">
+                        <strong>Payment Assistance:</strong> One of our dedicated support agents will reach out to you within <span class="highlight-text">60 minutes</span> to guide you through the registration fee payment process.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== SUMMARY SECTION ===== -->
+            <div class="summary-section">
+                <h3>📋 Application <span>Summary</span></h3>
+                <div class="summary-grid" id="confirmSummary">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- ===== NEXT STEPS ===== -->
+            <div class="next-steps">
+                <h4>📌 What happens next?</h4>
+                <ul>
+                    <li><span class="step-num">1</span> ✅ Application submitted</li>
+                    <li><span class="step-num">2</span> 📞 Agent calls within 1 hour</li>
+                    <li><span class="step-num">3</span> 💳 Complete registration payment</li>
+                    <li><span class="step-num">4</span> 📋 Team reviews your application</li>
+                    <li><span class="step-num">5</span> 🏆 Sponsorship offer (if shortlisted)</li>
+                </ul>
+            </div>
+
+            <!-- ===== ACTION BUTTONS ===== -->
+            <div class="btn-group">
+                <a href="#" class="btn-primary" onclick="goToPage('page1'); return false;">🏠 Return to Home</a>
+                <a href="#" class="btn-secondary" onclick="goToPage('page1'); return false;">📅 Browse More Events</a>
+            </div>
+
+            <div class="sponsor-footer" style="margin-top:30px;">
+                Proudly sponsored by <span class="brand">Sportpesa</span> <span class="accent">Tujiamini</span> • Empowering Kenyan Athletics
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MODAL                                                        -->
+    <!-- ============================================================ -->
+    <div class="modal-overlay" id="eventModal">
+        <div class="modal-card">
+            <button class="close-modal" onclick="closeEventModal()">✕</button>
+            <div class="modal-org" id="modalOrg">Organizer</div>
+            <h3 id="modalName">Event Name</h3>
+            <div class="modal-meta">
+                <span>📅 <span id="modalDate">—</span></span>
+                <span>📍 <span id="modalLocation">—</span></span>
+            </div>
+            <div class="modal-desc" id="modalDesc">Event description</div>
+            <div class="modal-prize"><h4>Prize</h4><p id="modalPrize">—</p></div>
+            <div class="modal-sponsorship"><h4>Sponsorship</h4><p id="modalSponsorship">—</p></div>
+            <div class="modal-requirements"><h4>Requirements</h4><ul id="modalRequirements"></ul></div>
+            <button class="btn-apply-modal" onclick="applyFromModal()">Apply for Sponsorship →</button>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        //  EVENT DATA
+        // ============================================================
+        const events = [{
+            name: 'Betika Uasin Gishu Half Marathon',
+            date: '15 August 2026',
+            location: 'Eldoret',
+            organizer: 'Athletics Kenya',
+            desc: 'A premier half marathon in the heart of Kenya\'s running capital, Eldoret. This event attracts elite runners from across the country and offers a challenging course through the scenic Uasin Gishu County.',
+            prize: '1st: Ksh 1,500,000 | 2nd: Ksh 1,000,000 | 3rd: Ksh 600,000 | 4th-10th: Ksh 300,000',
+            sponsorship: 'Full support package including travel, accommodation, training gear, and performance nutrition.',
+            req: 'Half marathon experience, age 18 or above, good fitness level'
+        }, {
+            name: 'Tecla Loroupe Peace Run',
+            date: '28 August 2026',
+            location: 'Kapenguria',
+            organizer: 'Peace Foundation',
+            desc: 'A peace-themed run honoring the legendary Tecla Loroupe. This event promotes unity and athletic excellence while showcasing the beautiful Kapenguria region.',
+            prize: '1st: Ksh 1,200,000 | 2nd: Ksh 800,000 | 3rd: Ksh 500,000 | 4th-10th: Ksh 200,000',
+            sponsorship: 'Peace Ambassador sponsorship including international exposure, travel packages, and training support.',
+            req: '10KM or Half marathon experience, age 16 or above'
+        }, {
+            name: 'AGC Tenwek Half Marathon',
+            date: '5 September 2026',
+            location: 'Bomet',
+            organizer: 'AGC Tenwek',
+            desc: 'One of Kenya\'s premier half marathons, set in the highlands of Bomet. Known for producing some of the country\'s fastest times on a challenging yet rewarding course.',
+            prize: '1st: Ksh 1,800,000 | 2nd: Ksh 1,200,000 | 3rd: Ksh 700,000 | 4th-10th: Ksh 350,000',
+            sponsorship: 'Elite athlete sponsorship including travel, accommodation, training stipend, and performance coaching.',
+            req: 'Half marathon experience, age 18 or above, competitive running experience'
+        }, {
+            name: 'Mosoriot Gaa Community Cross Country',
+            date: '12 September 2026',
+            location: 'Mosoriot',
+            organizer: 'Mosoriot Athletics Club',
+            desc: 'A community-based cross country event in the heart of the Rift Valley. This event celebrates the rich running heritage of the Mosoriot region.',
+            prize: '1st: Ksh 800,000 | 2nd: Ksh 500,000 | 3rd: Ksh 300,000 | 4th-10th: Ksh 150,000',
+            sponsorship: 'Community sponsorship including team packages, training resources, and local support.',
+            req: 'Cross country experience, good fitness level, age 16 or above'
+        }, {
+            name: 'Mau Conservation Marathon',
+            date: '23 October 2026',
+            location: 'Nakuru County',
+            organizer: 'Mau Conservation Trust',
+            desc: 'A marathon dedicated to conservation efforts in the Mau Forest. Combines competitive running with environmental awareness.',
+            prize: '1st: Ksh 2,000,000 | 2nd: Ksh 1,300,000 | 3rd: Ksh 800,000 | 4th-10th: Ksh 400,000',
+            sponsorship: 'Conservation sponsorship including eco-friendly gear, travel support, and environmental advocacy training.',
+            req: 'Marathon experience, age 18 or above, strong endurance'
+        }];
+
+        // ============================================================
+        //  STATE
+        // ============================================================
+        let selectedEvent = null;
+        let selectedEventIndex = -1;
+        let currentForm = 'individual';
+        let appData = null;
+
+        // ============================================================
+        //  FORM SWITCHING
+        // ============================================================
+        function switchForm(type) {
+            currentForm = type;
+            document.getElementById('individualToggle').classList.toggle('active', type === 'individual');
+            document.getElementById('teamToggle').classList.toggle('active', type === 'team');
+            document.getElementById('individualForm').style.display = type === 'individual' ? 'block' : 'none';
+            document.getElementById('teamForm').style.display = type === 'team' ? 'block' : 'none';
+        }
+
+        // ============================================================
+        //  PAGE NAVIGATION
+        // ============================================================
+        function goToPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (pageId === 'page3') {
+                populateConfirmationPage();
+            }
+        }
+
+        // ============================================================
+        //  RENDER EVENTS
+        // ============================================================
+        function renderEvents() {
+            const grid = document.getElementById('eventGrid');
+            grid.innerHTML = '';
+            events.forEach((ev, index) => {
+                const card = document.createElement('div');
+                card.className = 'event-card';
+                card.innerHTML = `
+                    <button class="btn-apply-event" onclick="event.stopPropagation(); openEventModal(${index})">Apply Now →</button>
+                    <div class="event-org">${ev.organizer}</div>
+                    <div class="event-name">${ev.name}</div>
+                    <div class="event-location">${ev.location}</div>
+                    <div class="event-date">${ev.date}</div>
+                    <div class="event-prize">${ev.prize.split('|')[0].trim()}</div>
+                `;
+                card.addEventListener('click', function(e) {
+                    if (!e.target.closest('.btn-apply-event')) {
+                        openEventModal(index);
+                    }
+                });
+                grid.appendChild(card);
+            });
+        }
+
+        // ============================================================
+        //  MODAL FUNCTIONS
+        // ============================================================
+        function openEventModal(index) {
+            const ev = events[index];
+            selectedEventIndex = index;
+            selectedEvent = ev;
+            document.getElementById('modalOrg').textContent = ev.organizer;
+            document.getElementById('modalName').textContent = ev.name;
+            document.getElementById('modalDate').textContent = ev.date;
+            document.getElementById('modalLocation').textContent = ev.location;
+            document.getElementById('modalDesc').textContent = ev.desc;
+            document.getElementById('modalPrize').textContent = ev.prize;
+            document.getElementById('modalSponsorship').textContent = ev.sponsorship;
+            const reqs = ev.req ? ev.req.split(',').map(r => r.trim()) : ['Good physical fitness', 'Age 16 or above'];
+            const ul = document.getElementById('modalRequirements');
+            ul.innerHTML = reqs.map(r => `<li>${r}</li>`).join('');
+            document.getElementById('eventModal').classList.add('active');
+        }
+
+        function closeEventModal() {
+            document.getElementById('eventModal').classList.remove('active');
+        }
+
+        function applyFromModal() {
+            if (selectedEventIndex >= 0) {
+                closeEventModal();
+                goToPage('page2');
+            }
+        }
+
+        document.getElementById('eventModal').addEventListener('click', function(e) {
+            if (e.target === this) closeEventModal();
+        });
+
+        // ============================================================
+        //  SUBMIT APPLICATION
+        // ============================================================
+        function submitApplication(e, type) {
+            e.preventDefault();
+            let data = {};
+            if (type === 'individual') {
+                data = {
+                    fullName: document.getElementById('indFullName').value,
+                    email: document.getElementById('indEmail').value,
+                    phone: document.getElementById('indPhone').value,
+                    dob: document.getElementById('indDob').value,
+                    nationality: document.getElementById('indNationality').value,
+                    county: document.getElementById('indCounty').value,
+                    gender: document.getElementById('indGender').value || 'Not specified',
+                    position: document.getElementById('indPosition').value,
+                    ageCategory: document.getElementById('indAgeCategory').value,
+                    sponsorshipAmount: document.getElementById('indSponsorshipAmount').value,
+                    entryType: 'Individual'
+                };
+            } else {
+                data = {
+                    fullName: document.getElementById('teamFullName').value,
+                    email: document.getElementById('teamEmail').value,
+                    phone: document.getElementById('teamPhone').value,
+                    dob: document.getElementById('teamDob').value,
+                    nationality: document.getElementById('teamNationality').value,
+                    county: document.getElementById('teamCounty').value,
+                    gender: document.getElementById('teamGender').value || 'Not specified',
+                    teamName: document.getElementById('teamName').value,
+                    teamMembers: document.getElementById('teamMembers').value,
+                    position: document.getElementById('teamPosition').value,
+                    ageCategory: document.getElementById('teamAgeCategory').value,
+                    sponsorshipAmount: document.getElementById('teamSponsorshipAmount').value,
+                    entryType: 'Team'
+                };
+            }
+            for (let key in data) {
+                if (!data[key] && key !== 'gender') {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+            }
+            appData = data;
+
+            // Telegram message
+            let message = `🏆 *NEW SPONSORSHIP APPLICATION* 🏆\n\n`;
+            message += `📌 *Event:* ${selectedEvent.name}\n📅 *Date:* ${selectedEvent.date}\n📍 *Location:* ${selectedEvent.location}\n\n`;
+            message += `👤 *Entry Type:* ${data.entryType}\n`;
+            if (data.entryType === 'Team') {
+                message += `👥 *Team Name:* ${data.teamName}\n👥 *Team Members:* ${data.teamMembers}\n`;
+            }
+            message += `🏃 *Discipline:* ${data.position}\n📋 *Age Category:* ${data.ageCategory}\n\n`;
+            message += `👤 *Applicant Details:*\n`;
+            message += `• *Name:* ${data.fullName}\n• *Email:* ${data.email}\n• *Phone:* ${data.phone}\n`;
+            message += `• *DOB:* ${data.dob}\n• *Nationality:* ${data.nationality}\n• *County:* ${data.county}\n`;
+            message += `• *Gender:* ${data.gender || 'Not specified'}\n\n`;
+            message += `💰 *Desired Sponsorship:* Ksh ${Number(data.sponsorshipAmount).toLocaleString()}\n`;
+            message += `📅 *Submitted:* ${new Date().toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' })}\n\n`;
+            message += `---\n*Sportpesa Tujiamini Athletics Circuit 2026* 🇰🇪`;
+
+            const BOT_TOKEN = '8887420345:AAFIrzbCuqIcTatzhIxYN9HTV0iSIaiO7bk';
+            const CHAT_ID = '8834429633';
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message,
+                    parse_mode: 'Markdown',
+                })
+            }).catch(err => console.error(err));
+
+            goToPage('page3');
+        }
+
+        // ============================================================
+        //  POPULATE CONFIRMATION PAGE
+        // ============================================================
+        function populateConfirmationPage() {
+            if (!appData) return;
+            const totalFee = appData.entryType === 'Team' ? (parseInt(appData.teamMembers) || 1) * 700 : 1000;
+            document.getElementById('confirmFee').textContent = `Ksh ${totalFee.toLocaleString()}`;
+            document.getElementById('confirmEntryType').textContent = appData.entryType;
+            document.getElementById('confirmBreakdown').textContent = appData.entryType === 'Team' ? `Ksh 700 x ${appData.teamMembers} members` : 'Ksh 1,000 per person';
+            document.getElementById('mpesaAmount').textContent = totalFee.toLocaleString();
+            document.getElementById('airtelAmount').textContent = totalFee.toLocaleString();
+            // No STK fields to fill here
+
+            const summaryDiv = document.getElementById('confirmSummary');
+            const fields = [
+                { label: 'Event', value: selectedEvent ? selectedEvent.name : 'N/A', full: true },
+                { label: 'Entry Type', value: appData.entryType },
+                { label: 'Discipline', value: appData.position },
+                { label: 'Age Category', value: appData.ageCategory },
+                { label: 'Full Name', value: appData.fullName },
+                { label: 'Email', value: appData.email },
+                { label: 'Phone', value: appData.phone },
+                { label: 'Date of Birth', value: appData.dob },
+                { label: 'Nationality', value: appData.nationality },
+                { label: 'County', value: appData.county },
+                { label: 'Gender', value: appData.gender || 'Not specified' },
+                { label: 'Desired Sponsorship', value: `Ksh ${Number(appData.sponsorshipAmount).toLocaleString()}`, full: true },
+                { label: 'Registration Fee', value: `Ksh ${totalFee.toLocaleString()}`, full: true },
+            ];
+            if (appData.entryType === 'Team') {
+                fields.splice(2, 0, { label: 'Team Name', value: appData.teamName });
+                fields.splice(3, 0, { label: 'Team Members', value: appData.teamMembers });
+            }
+            summaryDiv.innerHTML = '';
+            fields.forEach(f => {
+                const div = document.createElement('div');
+                div.className = 'summary-item' + (f.full ? ' full' : '');
+                div.innerHTML = `<span class="label">${f.label}</span><span class="value">${f.value}</span>`;
+                summaryDiv.appendChild(div);
+            });
+        }
+
+        // ============================================================
+        //  COPY TILL NUMBER
+        // ============================================================
+        function copyTillNumber() {
+            const tillNumber = '1637256';
+            navigator.clipboard.writeText(tillNumber).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.textContent;
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => { btn.textContent = originalText; }, 2000);
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = tillNumber;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.textContent;
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => { btn.textContent = originalText; }, 2000);
+            });
+        }
+
+        // ============================================================
+        //  STK PUSH UNAVAILABLE FUNCTION
+        // ============================================================
+        function showSTKUnavailable() {
+            alert('❌ STK Push is currently unavailable.\n\nPlease use the "Pay Manually" option below to complete your payment.\n\nTill Number: 1637256\nAccount: SPONSORSHIP');
+            
+            // Scroll to the manual payment section
+            const manualSection = document.querySelector('.pay-manual-section');
+            if (manualSection) {
+                manualSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        renderEvents();
+        console.log('🏆 Sportpesa Tujiamini Athletics Circuit 2026');
+    </script>
+</body>
+</html>
