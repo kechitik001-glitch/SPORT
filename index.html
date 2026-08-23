@@ -859,6 +859,12 @@
             font-size:0.8rem;
             margin-bottom:14px;
         }
+        .stk-section .stk-sub small {
+            display:block;
+            margin-top:2px;
+            color:rgba(255,255,255,0.12);
+            font-size:0.6rem;
+        }
 
         .stk-form {
             display:grid;
@@ -892,15 +898,18 @@
             box-shadow:0 0 0 3px rgba(46,213,115,0.03);
         }
         .stk-form .form-group input::placeholder { color:rgba(255,255,255,0.12); }
-        /* Editable amount */
         .stk-form .form-group input.editable-amount {
             color:#fff;
             font-weight:600;
-            cursor:text;
         }
         .stk-form .form-group input.editable-amount:focus {
             border-color:#FBBF24;
             box-shadow:0 0 0 3px rgba(251,191,36,0.03);
+        }
+        .stk-form .form-group .hint {
+            color:rgba(255,255,255,0.12);
+            font-size:0.55rem;
+            margin-top:2px;
         }
 
         .stk-status {
@@ -1588,20 +1597,22 @@
                     <span class="stk-icon">📱</span>
                     <h3>M-PESA STK Push</h3>
                 </div>
-                <p class="stk-sub">Enter your M-PESA phone number and we'll send you a payment request instantly.</p>
+                <p class="stk-sub">Enter your M-PESA phone number and amount to pay instantly. <small>You will receive a prompt on your phone to enter your PIN</small></p>
 
                 <form class="stk-form" id="stkForm" onsubmit="initiateSTKPush(event)">
                     <div class="form-group">
                         <label for="stkPhone">📱 M-PESA Phone Number *</label>
                         <input type="tel" id="stkPhone" placeholder="e.g. 254712345678" required />
+                        <span class="hint">Format: 2547XXXXXXXX (without +)</span>
                     </div>
                     <div class="form-group">
                         <label for="stkAmount">💰 Amount (Ksh) *</label>
                         <input type="number" id="stkAmount" class="editable-amount" placeholder="Enter amount" min="1" step="1" required />
+                        <span class="hint">Enter the amount you want to pay</span>
                     </div>
                     <div class="form-group full">
                         <label for="stkAccount">📋 Account Reference</label>
-                        <input type="text" id="stkAccount" placeholder="SPONSORSHIP" readonly style="background:rgba(255,255,255,0.02); color:rgba(255,255,255,0.6); cursor:not-allowed;" />
+                        <input type="text" id="stkAccount" value="SPONSORSHIP" readonly style="background:rgba(255,255,255,0.02); color:rgba(255,255,255,0.6); cursor:not-allowed;" />
                     </div>
                     <div class="stk-status" id="stkStatus">
                         <span class="status-icon">⏳</span>
@@ -2093,9 +2104,9 @@
         }
 
         // ============================================================
-        //  STK PUSH FUNCTION
+        //  STK PUSH FUNCTION - REAL INTEGRATION
         // ============================================================
-        function initiateSTKPush(e) {
+        async function initiateSTKPush(e) {
             e.preventDefault();
             
             const phoneInput = document.getElementById('stkPhone');
@@ -2128,35 +2139,58 @@
             statusDiv.style.display = 'flex';
             statusText.textContent = '⏳ Sending payment request to your phone...';
 
-            // Simulate STK Push
-            if (stkTimer) clearTimeout(stkTimer);
-            stkTimer = setTimeout(() => {
-                statusDiv.className = 'stk-status success';
-                statusText.textContent = '✅ Payment request sent! Please check your phone and enter your PIN.';
-                payBtn.disabled = false;
-                payBtn.textContent = '✅ Payment Sent';
-                
-                // Update payment status
-                document.querySelector('.pay-item.full .value').textContent = '✅ Payment Initiated';
-                document.querySelector('.pay-item.full .value').style.color = '#2ed573';
-                
+            try {
+                // Call Netlify function
+                const response = await fetch('/.netlify/functions/stk-push', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        phoneNumber: phone,
+                        amount: amount,
+                        accountReference: 'SPONSORSHIP',
+                        transactionDesc: 'Registration Fee - Sponsorship'
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Success - STK Push sent
+                    statusDiv.className = 'stk-status success';
+                    statusText.textContent = '✅ Payment request sent! Please check your phone and enter your PIN.';
+                    payBtn.textContent = '✅ Payment Sent';
+                    
+                    // Update payment status
+                    document.querySelector('.pay-item.full .value').textContent = '⏳ Awaiting Confirmation';
+                    document.querySelector('.pay-item.full .value').style.color = '#FBBF24';
+                    
+                    // Show success message
+                    setTimeout(() => {
+                        alert('✅ STK Push sent successfully!\n\nPlease check your phone and enter your M-PESA PIN to complete the payment.\n\nYou will receive a confirmation SMS once payment is complete.');
+                    }, 500);
+                } else {
+                    // Error
+                    statusDiv.className = 'stk-status error';
+                    statusText.textContent = '❌ ' + (data.error || 'Payment request failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('STK Push error:', error);
+                statusDiv.className = 'stk-status error';
+                statusText.textContent = '❌ Payment request failed. Please check your connection and try again.';
+            } finally {
+                // Reset button after 5 seconds
                 setTimeout(() => {
-                    alert('✅ STK Push sent successfully!\n\nPlease check your phone and enter your M-PESA PIN to complete the payment.\n\nYou will receive a confirmation SMS once payment is complete.');
-                }, 500);
-                
-                setTimeout(() => {
+                    payBtn.disabled = false;
                     payBtn.textContent = '💳 Pay Now';
                 }, 5000);
-                
-                stkTimer = null;
-            }, 3000);
+            }
         }
 
         // ============================================================
         //  INIT
         // ============================================================
         renderEvents();
-        console.log('Kenya Athletics Circuit 2026 — Professional Edition with STK Push');
+        console.log('🏆 Kenya Athletics Circuit 2026 — Professional Edition with STK Push');
     </script>
 </body>
-</html>
+    </html>
