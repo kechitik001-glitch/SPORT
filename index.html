@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenya Athletics Circuit 2026</title>
+    <title>Sportpesa Tujiamini Athletics Circuit 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
     <style>
+        /* ===== BRAND COLORS ===== */
+        :root {
+            --primary: #00B140;
+            --primary-dark: #008f33;
+            --accent: #FFD700;
+            --accent-dark: #e6c200;
+            --bg-dark: #0a1a0a;
+            --text-light: #ffffff;
+        }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Inter',sans-serif; background:#0a0a1a; color:#fff; line-height:1.7; min-height:100vh; overflow-x:hidden; }
+        body { font-family:'Inter',sans-serif; background:var(--bg-dark); color:var(--text-light); line-height:1.7; min-height:100vh; overflow-x:hidden; }
         ::-webkit-scrollbar { width:8px; }
-        ::-webkit-scrollbar-track { background:#0a0a1a; }
-        ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#FBBF24,#F59E0B); border-radius:10px; }
+        ::-webkit-scrollbar-track { background:var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background:linear-gradient(180deg, var(--primary), var(--accent)); border-radius:10px; }
 
         .page { display:none; padding:20px; max-width:1400px; margin:0 auto; position:relative; z-index:1; }
         .page.active { display:block; animation:fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
 
-        /* ===== PAGE 1: EVENTS SECTION WITH BACKGROUND ===== */
+        /* ===== PAGE 1: EVENTS SECTION ===== */
         .event-section {
             position:relative;
             padding:60px 20px 80px;
@@ -26,7 +35,7 @@
             justify-content:center;
             align-items:center;
             overflow:hidden;
-            background:#0a0a1a;
+            background:var(--bg-dark);
         }
         .event-section .bg-container {
             position:absolute;
@@ -38,26 +47,36 @@
             width:100%;
             height:100%;
             object-fit:cover;
-            opacity:0.35;
+            opacity:0.30;
             animation:zoomBackground 20s infinite alternate ease-in-out;
         }
         .event-section .bg-container .water-overlay {
             position:absolute;
             inset:0;
             background:
-                radial-gradient(ellipse at 30% 40%, rgba(251,191,36,0.06), transparent 50%),
-                radial-gradient(ellipse at 70% 60%, rgba(251,191,36,0.04), transparent 50%);
+                radial-gradient(ellipse at 30% 40%, rgba(0,177,64,0.06), transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(255,215,0,0.04), transparent 50%);
             animation:waterFlow 12s ease-in-out infinite alternate;
         }
         .event-section .bg-container .gradient-overlay {
             position:absolute;
             inset:0;
             background:linear-gradient(180deg, 
-                rgba(10,10,26,0.7) 0%, 
-                rgba(10,10,26,0.5) 30%, 
-                rgba(10,10,26,0.6) 60%, 
-                rgba(10,10,26,0.85) 100%
+                rgba(10,26,10,0.7) 0%, 
+                rgba(10,26,10,0.5) 30%, 
+                rgba(10,26,10,0.6) 60%, 
+                rgba(10,26,10,0.85) 100%
             );
+        }
+        /* ---- NEW: SPORTPESA LOGO WATERMARK ---- */
+        .event-section .bg-container .bg-logo {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: url('https://www.sportpesa.com/images/logo.png') center/contain no-repeat;
+            opacity: 0.06;
+            pointer-events: none;
+            animation: none;
         }
         @keyframes zoomBackground {
             0% { transform:scale(1); }
@@ -76,9 +95,41 @@
             max-width:1400px;
             text-align:center;
         }
+
+        .sponsor-header {
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:12px;
+            margin-bottom:16px;
+            flex-wrap:wrap;
+        }
+        .sponsor-header .logo {
+            max-height:60px;
+            width:auto;
+            filter:drop-shadow(0 4px 20px rgba(0,177,64,0.3));
+        }
+        .sponsor-header .brand-text {
+            font-family:'Playfair Display',serif;
+            font-size:1.8rem;
+            font-weight:800;
+            background:linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            background-clip:text;
+            letter-spacing:1px;
+        }
+        .sponsor-header .tagline {
+            font-size:0.8rem;
+            color:rgba(255,255,255,0.3);
+            letter-spacing:3px;
+            text-transform:uppercase;
+            font-weight:300;
+        }
+
         .event-section .section-tag {
             display:inline-block; 
-            background:linear-gradient(135deg,#FBBF24,#F59E0B);
+            background:linear-gradient(135deg, var(--primary), var(--accent));
             color:#0a0a1a; 
             padding:4px 20px; 
             border-radius:50px;
@@ -95,7 +146,7 @@
             text-shadow:0 2px 30px rgba(0,0,0,0.5);
         }
         .event-section h2 span {
-            background:linear-gradient(135deg,#FBBF24,#F59E0B);
+            background:linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip:text; 
             -webkit-text-fill-color:transparent; 
             background-clip:text;
@@ -117,7 +168,7 @@
             width:100%;
         }
         .event-card {
-            background:rgba(10,10,26,0.6);
+            background:rgba(10,26,10,0.6);
             backdrop-filter:blur(12px);
             -webkit-backdrop-filter:blur(12px);
             border:1px solid rgba(255,255,255,0.06);
@@ -139,15 +190,15 @@
             content:'';
             position:absolute;
             inset:0;
-            background:linear-gradient(135deg, rgba(251,191,36,0.02), transparent 50%);
+            background:linear-gradient(135deg, rgba(0,177,64,0.02), transparent 50%);
             opacity:0;
             transition:opacity 0.4s;
             z-index:0;
         }
         .event-card:hover {
             transform:translateY(-4px);
-            border-color:rgba(251,191,36,0.15);
-            background:rgba(10,10,26,0.75);
+            border-color:rgba(0,177,64,0.15);
+            background:rgba(10,26,10,0.75);
             box-shadow:0 16px 48px rgba(0,0,0,0.4);
         }
         .event-card:hover::before { opacity:1; }
@@ -155,7 +206,7 @@
         .event-card .event-org {
             font-size:0.5rem;
             font-weight:600;
-            color:rgba(251,191,36,0.6);
+            color:rgba(0,177,64,0.6);
             text-transform:uppercase;
             letter-spacing:2px;
             margin-bottom:2px;
@@ -180,13 +231,13 @@
         }
         .event-card .event-prize {
             display:inline-block;
-            background:rgba(251,191,36,0.06);
-            border:1px solid rgba(251,191,36,0.06);
+            background:rgba(0,177,64,0.06);
+            border:1px solid rgba(0,177,64,0.06);
             border-radius:20px;
             padding:2px 10px;
             font-size:0.5rem;
             font-weight:600;
-            color:#FBBF24;
+            color:var(--primary);
             margin-bottom:10px;
         }
         .event-card .btn-apply-event {
@@ -195,7 +246,7 @@
             justify-content:center;
             gap:6px;
             padding:6px 20px;
-            background:linear-gradient(135deg,#FBBF24,#F59E0B);
+            background:linear-gradient(135deg, var(--primary), var(--accent));
             border:none;
             border-radius:50px;
             font-weight:700;
@@ -204,7 +255,7 @@
             cursor:pointer;
             transition:all 0.3s ease;
             text-decoration:none;
-            box-shadow:0 4px 16px rgba(251,191,36,0.15);
+            box-shadow:0 4px 16px rgba(0,177,64,0.15);
             width:100%;
             max-width:160px;
             margin-bottom:10px;
@@ -212,7 +263,7 @@
         }
         .event-card .btn-apply-event:hover {
             transform:scale(1.04);
-            box-shadow:0 8px 25px rgba(251,191,36,0.25);
+            box-shadow:0 8px 25px rgba(0,177,64,0.25);
         }
 
         .customer-care-section {
@@ -220,7 +271,7 @@
             z-index:2;
             margin-top:40px;
             padding:16px 24px;
-            background:rgba(10,10,26,0.5);
+            background:rgba(10,26,10,0.5);
             backdrop-filter:blur(12px);
             -webkit-backdrop-filter:blur(12px);
             border:1px solid rgba(255,255,255,0.04);
@@ -233,8 +284,8 @@
             transition:all 0.3s ease;
         }
         .customer-care-section:hover {
-            border-color:rgba(251,191,36,0.1);
-            background:rgba(10,10,26,0.6);
+            border-color:rgba(0,177,64,0.1);
+            background:rgba(10,26,10,0.6);
         }
         .customer-care-section .label {
             font-size:0.75rem;
@@ -264,11 +315,14 @@
         .customer-care-section .phone-link .phone-icon { font-size:1.1rem; }
         .customer-care-section .phone-link .phone-number { font-weight:700; letter-spacing:0.5px; }
 
-        /* ===== PAGE 2: APPLICATION FORM ===== */
+        /* ============================================================ */
+        /*  PAGE 2: APPLICATION FORM (unchanged)                        */
+        /* ============================================================ */
         .apply-section {
             max-width:1000px;
             margin:0 auto;
             padding:20px 0;
+            position:relative;
         }
         .back-link {
             display:inline-flex;
@@ -280,156 +334,67 @@
             transition:color 0.3s;
             margin-bottom:20px;
         }
-        .back-link:hover { color:#FBBF24; }
-
-        .event-summary {
-            background:rgba(255,255,255,0.02);
-            border:1px solid rgba(255,215,0,0.05);
-            border-radius:20px;
-            padding:24px 24px 22px;
-            margin-bottom:28px;
-            backdrop-filter:blur(6px);
-            box-shadow:0 12px 40px rgba(0,0,0,0.15);
-            position:relative;
-            overflow:hidden;
-        }
-        .event-summary .shimmer-bar {
-            position:absolute;
-            top:0; left:0; right:0;
-            height:3px;
-            background:linear-gradient(90deg,#FBBF24,#F59E0B,#FBBF24);
-            background-size:200% 100%;
-            animation:shimmerBar 4s ease-in-out infinite;
-        }
-        @keyframes shimmerBar {
-            0%,100%{background-position:0% 0%;}
-            50%{background-position:100% 0%;}
-        }
-        .event-summary .summary-header {
-            display:flex;
-            justify-content:space-between;
-            align-items:flex-start;
-            flex-wrap:wrap;
-            gap:10px;
-            margin-bottom:10px;
-        }
-        .event-summary .summary-title {
-            font-family:'Playfair Display',serif;
-            font-size:1.4rem;
-            font-weight:800;
-            color:#fff;
-            line-height:1.2;
-        }
-        .event-summary .summary-title span { color:#FBBF24; }
-        .event-summary .summary-organizer {
-            font-size:0.85rem;
-            background:rgba(255,215,0,0.05);
-            padding:3px 16px;
-            border-radius:50px;
-            color:#FBBF24;
-            border:1px solid rgba(255,215,0,0.06);
-        }
-        .event-summary .summary-meta {
-            display:flex;
-            flex-wrap:wrap;
-            gap:10px 20px;
-            margin:6px 0 10px;
-        }
-        .event-summary .summary-meta .meta-item {
-            display:flex;
-            align-items:center;
-            gap:4px;
-            font-size:0.8rem;
-            color:rgba(255,255,255,0.4);
-        }
-        .event-summary .summary-meta .meta-item strong { color:#fff; }
-        .event-summary .summary-details {
-            display:grid;
-            grid-template-columns:1.6fr 1fr;
-            gap:20px;
-            margin-top:10px;
-        }
-        .event-summary .summary-details .desc {
-            color:rgba(255,255,255,0.55);
-            font-size:0.85rem;
-            line-height:1.6;
-        }
-        .event-summary .summary-details .requirements {
-            background:rgba(255,215,0,0.02);
-            border-radius:12px;
-            padding:14px 16px;
-            border:1px solid rgba(255,215,0,0.03);
-        }
-        .event-summary .summary-details .requirements h4 {
-            color:#FBBF24;
-            font-size:0.6rem;
-            text-transform:uppercase;
-            letter-spacing:2px;
-            margin-bottom:4px;
-        }
-        .event-summary .summary-details .requirements ul {
-            list-style:none;
-            padding:0;
-        }
-        .event-summary .summary-details .requirements ul li {
-            padding:3px 0;
-            padding-left:18px;
-            position:relative;
-            font-size:0.75rem;
-            color:rgba(255,255,255,0.55);
-        }
-        .event-summary .summary-details .requirements ul li::before {
-            content:'▹';
-            position:absolute;
-            left:0;
-            color:#FBBF24;
-        }
-        .event-summary .summary-prizes {
-            display:flex;
-            flex-wrap:wrap;
-            gap:8px;
-            margin-top:12px;
-        }
-        .event-summary .summary-prizes .prize-box {
-            background:rgba(251,191,36,0.02);
-            border-radius:12px;
-            padding:10px 14px;
-            border-left:3px solid #FBBF24;
-            flex:1;
-            min-width:150px;
-        }
-        .event-summary .summary-prizes .prize-box h4 {
-            color:#FBBF24;
-            font-size:0.6rem;
-            text-transform:uppercase;
-            letter-spacing:2px;
-            margin-bottom:2px;
-        }
-        .event-summary .summary-prizes .prize-box p {
-            color:rgba(255,255,255,0.55);
-            font-size:0.8rem;
-        }
+        .back-link:hover { color:var(--accent); }
 
         .form-container {
             background:rgba(255,255,255,0.02);
             border:1px solid rgba(255,255,255,0.04);
             border-radius:20px;
-            padding:28px 30px 30px;
+            padding:32px 30px 30px;
             backdrop-filter:blur(6px);
-            margin-top:24px;
             box-shadow:0 16px 40px rgba(0,0,0,0.12);
+            position:relative;
+            overflow:hidden;
+        }
+        .form-container .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
+        }
+        .form-container .watermark img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .form-container > * {
+            position:relative;
+            z-index:1;
+        }
+
+        .form-container .brand-badge {
+            display:inline-block;
+            background:linear-gradient(135deg, var(--primary), var(--accent));
+            color:#0a0a1a;
+            font-weight:700;
+            font-size:0.6rem;
+            padding:4px 16px;
+            border-radius:50px;
+            letter-spacing:1px;
+            text-transform:uppercase;
+            margin-bottom:8px;
         }
         .form-container h2 {
             font-family:'Playfair Display',serif;
-            font-size:1.6rem;
+            font-size:1.8rem;
             font-weight:800;
-            margin-bottom:4px;
+            margin-bottom:2px;
         }
-        .form-container h2 span { color:#FBBF24; }
+        .form-container h2 span { color:var(--primary); }
         .form-container .form-sub {
             color:rgba(255,255,255,0.3);
-            margin-bottom:18px;
+            margin-bottom:20px;
             font-size:0.85rem;
+        }
+        .form-container .form-sub strong {
+            color:var(--accent);
+            font-weight:600;
         }
 
         .entry-toggle {
@@ -451,35 +416,34 @@
             font-family:'Inter',sans-serif;
         }
         .entry-toggle .toggle-btn.active {
-            border-color:#FBBF24;
-            background:rgba(251,191,36,0.06);
-            color:#FBBF24;
-            box-shadow:0 4px 20px rgba(251,191,36,0.05);
+            border-color:var(--primary);
+            background:rgba(0,177,64,0.06);
+            color:var(--primary);
         }
         .entry-toggle .toggle-btn:hover {
-            border-color:rgba(251,191,36,0.2);
+            border-color:rgba(0,177,64,0.2);
             color:#fff;
         }
 
         .form-grid {
             display:grid;
             grid-template-columns:1fr 1fr;
-            gap:14px 20px;
+            gap:16px 24px;
         }
-        .form-group { display:flex; flex-direction:column; gap:2px; }
+        .form-group { display:flex; flex-direction:column; gap:4px; }
         .form-group.full { grid-column:1/-1; }
         .form-group label {
-            font-size:0.65rem;
-            font-weight:600;
-            text-transform:uppercase;
-            letter-spacing:1px;
-            color:rgba(255,255,255,0.25);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
         }
         .form-group input, .form-group select {
             background:rgba(255,255,255,0.03);
-            border:1px solid rgba(255,255,255,0.05);
+            border:1px solid rgba(255,255,255,0.06);
             border-radius:10px;
-            padding:10px 14px;
+            padding:12px 14px;
             color:#fff;
             font-family:'Inter',sans-serif;
             font-size:0.85rem;
@@ -488,9 +452,9 @@
             width:100%;
         }
         .form-group input:focus, .form-group select:focus {
-            border-color:#FBBF24;
+            border-color:var(--primary);
             background:rgba(255,255,255,0.04);
-            box-shadow:0 0 0 3px rgba(251,191,36,0.03);
+            box-shadow:0 0 0 3px rgba(0,177,64,0.05);
         }
         .form-group input::placeholder { color:rgba(255,255,255,0.12); }
         .form-group select option { background:#1a1a2e; color:#fff; }
@@ -500,10 +464,11 @@
             margin-top:2px;
             font-style:italic;
         }
+
         .btn-submit {
             grid-column:1/-1;
-            padding:12px 32px;
-            background:linear-gradient(135deg,#FBBF24,#F59E0B);
+            padding:14px 32px;
+            background:linear-gradient(135deg, var(--primary), var(--accent));
             border:none;
             border-radius:50px;
             font-weight:700;
@@ -511,19 +476,19 @@
             color:#0a0a1a;
             cursor:pointer;
             transition:all 0.3s ease;
-            box-shadow:0 4px 20px rgba(251,191,36,0.1);
-            margin-top:4px;
+            box-shadow:0 4px 20px rgba(0,177,64,0.1);
+            margin-top:8px;
             width:100%;
             max-width:320px;
             justify-self:center;
         }
-        .btn-submit:hover { transform:scale(1.02); box-shadow:0 8px 30px rgba(251,191,36,0.15); }
+        .btn-submit:hover { transform:scale(1.02); box-shadow:0 8px 30px rgba(0,177,64,0.15); }
         .btn-submit:active { transform:scale(0.97); }
 
         .form-customer-care {
             margin-top:20px;
             padding:14px 20px;
-            background:rgba(10,10,26,0.3);
+            background:rgba(10,26,10,0.3);
             border:1px solid rgba(255,255,255,0.03);
             border-radius:12px;
             display:flex;
@@ -558,16 +523,29 @@
             box-shadow:0 8px 25px rgba(46,213,115,0.2);
         }
 
-        /* ===== PAGE 3: CONFIRMATION & PAYMENT ===== */
-        .confirmation-section {
-            max-width:1000px;
-            margin:0 auto;
-            padding:20px 0;
+        .form-footer-note {
+            margin-top:16px;
+            text-align:center;
+            font-size:0.65rem;
+            color:rgba(255,255,255,0.1);
+            letter-spacing:0.5px;
+        }
+        .form-footer-note .brand {
+            color:var(--primary);
+            font-weight:600;
+        }
+        .form-footer-note .accent {
+            color:var(--accent);
+            font-weight:600;
         }
 
+        /* ============================================================ */
+        /*  PAGE 3: CONFIRMATION & PAYMENT (unchanged)                  */
+        /* ============================================================ */
+        .confirmation-section { max-width:1000px; margin:0 auto; padding:20px 0; }
         .confirmation-card {
             background:rgba(255,255,255,0.02);
-            border:1px solid rgba(46,213,115,0.08);
+            border:1px solid rgba(0,177,64,0.08);
             border-radius:20px;
             padding:32px 28px 28px;
             backdrop-filter:blur(10px);
@@ -575,26 +553,11 @@
             margin-bottom:24px;
             box-shadow:0 16px 40px rgba(0,0,0,0.15);
         }
-        .confirmation-card .checkmark {
-            font-size:3.5rem;
-            display:block;
-            margin-bottom:6px;
-        }
-        .confirmation-card h2 {
-            font-family:'Playfair Display',serif;
-            font-size:1.8rem;
-            color:#2ed573;
-            margin-bottom:4px;
-        }
-        .confirmation-card p {
-            color:rgba(255,255,255,0.45);
-            font-size:0.9rem;
-            max-width:500px;
-            margin:0 auto;
-        }
+        .confirmation-card .checkmark { font-size:3.5rem; display:block; margin-bottom:6px; }
+        .confirmation-card h2 { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--primary); margin-bottom:4px; }
+        .confirmation-card p { color:rgba(255,255,255,0.45); font-size:0.9rem; max-width:500px; margin:0 auto; }
         .confirmation-card p strong { color:#fff; }
 
-        /* Customer Care on Page 3 */
         .confirmation-customer-care {
             background:rgba(255,215,0,0.02);
             border:1px solid rgba(255,215,0,0.04);
@@ -610,7 +573,7 @@
         }
         .confirmation-customer-care .agent-image {
             width:70px; height:70px; border-radius:50%; flex-shrink:0;
-            border:3px solid rgba(251,191,36,0.1);
+            border:3px solid rgba(0,177,64,0.1);
             box-shadow:0 4px 20px rgba(0,0,0,0.15);
             transition:all 0.3s ease;
             background:linear-gradient(135deg, #1a1a2e, #2a2a4a);
@@ -621,9 +584,7 @@
             position:relative;
             overflow:hidden;
         }
-        .confirmation-customer-care .agent-image img {
-            width:100%; height:100%; object-fit:cover;
-        }
+        .confirmation-customer-care .agent-image img { width:100%; height:100%; object-fit:cover; }
         .confirmation-customer-care .agent-image .status-dot {
             position:absolute; bottom:4px; right:4px; width:12px; height:12px;
             background:#2ed573; border-radius:50%; border:2px solid #0a0a1a;
@@ -634,31 +595,9 @@
             50% { transform:scale(1.3); opacity:0.7; }
             100% { transform:scale(1); opacity:1; }
         }
-        .confirmation-customer-care:hover .agent-image {
-            border-color:rgba(251,191,36,0.2);
-            transform:scale(1.02);
-        }
-        .confirmation-customer-care .agent-info { flex:1; min-width:160px; }
-        .confirmation-customer-care .agent-info .agent-name {
-            font-family:'Playfair Display',serif;
-            font-size:1.2rem;
-            color:#FBBF24;
-            font-weight:700;
-        }
-        .confirmation-customer-care .agent-info .agent-title {
-            color:rgba(255,255,255,0.25);
-            font-size:0.65rem;
-            text-transform:uppercase;
-            letter-spacing:2px;
-            margin-bottom:2px;
-        }
-        .confirmation-customer-care .agent-info .agent-bio {
-            color:rgba(255,255,255,0.4);
-            font-size:0.8rem;
-            line-height:1.4;
-            margin-top:2px;
-        }
-        .confirmation-customer-care .call-actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+        .confirmation-customer-care .agent-name { color:var(--primary); font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; }
+        .confirmation-customer-care .agent-title { color:rgba(255,255,255,0.25); font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:2px; }
+        .confirmation-customer-care .agent-bio { color:rgba(255,255,255,0.4); font-size:0.8rem; line-height:1.4; margin-top:2px; }
         .confirmation-customer-care .btn-call {
             display:inline-flex; align-items:center; gap:6px;
             padding:10px 22px; background:linear-gradient(135deg, #2ed573, #26de81);
@@ -666,530 +605,113 @@
             color:#0a0a1a; cursor:pointer; transition:all 0.3s ease;
             box-shadow:0 4px 16px rgba(46,213,115,0.1); text-decoration:none;
         }
-        .confirmation-customer-care .btn-call:hover {
-            transform:scale(1.03);
-            box-shadow:0 8px 25px rgba(46,213,115,0.15);
-        }
+        .confirmation-customer-care .btn-call:hover { transform:scale(1.03); box-shadow:0 8px 25px rgba(46,213,115,0.15); }
 
-        /* Payment Section */
-        .payment-section {
-            background:rgba(255,215,0,0.02);
-            border:1px solid rgba(255,215,0,0.04);
-            border-radius:18px;
-            padding:22px 26px 26px;
-            backdrop-filter:blur(8px);
-            margin-bottom:24px;
-        }
-        .payment-section .payment-header {
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            flex-wrap:wrap;
-            gap:10px;
-            margin-bottom:12px;
-        }
-        .payment-section .payment-header h3 {
-            font-family:'Playfair Display',serif;
-            font-size:1.3rem;
-            color:#FBBF24;
-        }
-        .payment-section .payment-header .total-fee {
-            font-size:1.4rem;
-            font-weight:800;
-            color:#fff;
-            background:rgba(251,191,36,0.06);
-            padding:4px 18px;
-            border-radius:50px;
-            border:1px solid rgba(251,191,36,0.08);
-        }
-        .payment-details {
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:10px 20px;
-            margin-bottom:12px;
-        }
-        .payment-details .pay-item {
-            display:flex;
-            flex-direction:column;
-            gap:2px;
-            padding:4px 0;
-            border-bottom:1px solid rgba(255,255,255,0.02);
-        }
-        .payment-details .pay-item .label {
-            font-size:0.5rem;
-            text-transform:uppercase;
-            letter-spacing:1.5px;
-            color:rgba(255,255,255,0.2);
-        }
-        .payment-details .pay-item .value {
-            font-size:0.8rem;
-            font-weight:500;
-            color:#fff;
-        }
+        .payment-section { background:rgba(255,215,0,0.02); border:1px solid rgba(255,215,0,0.04); border-radius:18px; padding:22px 26px 26px; backdrop-filter:blur(8px); margin-bottom:24px; }
+        .payment-section .payment-header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px; }
+        .payment-section .payment-header h3 { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--primary); }
+        .payment-section .payment-header .total-fee { font-size:1.4rem; font-weight:800; color:#fff; background:rgba(0,177,64,0.06); padding:4px 18px; border-radius:50px; border:1px solid rgba(0,177,64,0.08); }
+        .payment-details { display:grid; grid-template-columns:1fr 1fr; gap:10px 20px; margin-bottom:12px; }
+        .payment-details .pay-item { display:flex; flex-direction:column; gap:2px; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.02); }
+        .payment-details .pay-item .label { font-size:0.5rem; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,0.2); }
+        .payment-details .pay-item .value { font-size:0.8rem; font-weight:500; color:#fff; }
         .payment-details .pay-item.full { grid-column:1/-1; }
-
-        .payment-options {
-            display:grid;
-            grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
-            gap:8px;
-            margin:12px 0 12px;
-        }
-        .payment-option {
-            display:flex;
-            align-items:center;
-            gap:8px;
-            background:rgba(255,255,255,0.02);
-            border:1px solid rgba(255,255,255,0.04);
-            border-radius:10px;
-            padding:10px 14px;
-            cursor:pointer;
-            transition:all 0.3s ease;
-        }
-        .payment-option:hover {
-            background:rgba(255,255,255,0.03);
-            border-color:rgba(251,191,36,0.1);
-        }
-        .payment-option.selected {
-            border-color:#FBBF24;
-            background:rgba(251,191,36,0.03);
-        }
-        .payment-option input[type="radio"] {
-            accent-color:#FBBF24;
-            width:14px;
-            height:14px;
-            cursor:pointer;
-            flex-shrink:0;
-        }
-        .payment-option .pay-details .pay-name {
-            font-weight:600;
-            font-size:0.8rem;
-            color:#fff;
-        }
-        .payment-option .pay-details .pay-desc {
-            font-size:0.55rem;
-            color:rgba(255,255,255,0.2);
-        }
-        .payment-option.disabled {
-            opacity:0.4;
-            cursor:default;
-        }
-
-        .payment-instructions {
-            background:rgba(255,255,255,0.02);
-            border-radius:12px;
-            padding:14px 18px;
-            border-left:3px solid #FBBF24;
-            margin:12px 0;
-        }
-        .payment-instructions h4 {
-            color:#FBBF24;
-            font-size:0.65rem;
-            text-transform:uppercase;
-            letter-spacing:2px;
-            margin-bottom:4px;
-        }
-        .payment-instructions .pay-method {
-            display:flex;
-            align-items:center;
-            gap:10px;
-            padding:6px 0;
-            border-bottom:1px solid rgba(255,255,255,0.02);
-        }
+        .payment-options { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:8px; margin:12px 0 12px; }
+        .payment-option { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04); border-radius:10px; padding:10px 14px; cursor:pointer; transition:all 0.3s ease; }
+        .payment-option:hover { background:rgba(255,255,255,0.03); border-color:rgba(0,177,64,0.1); }
+        .payment-option.selected { border-color:var(--primary); background:rgba(0,177,64,0.03); }
+        .payment-option input[type="radio"] { accent-color:var(--primary); width:14px; height:14px; cursor:pointer; flex-shrink:0; }
+        .payment-option .pay-details .pay-name { font-weight:600; font-size:0.8rem; color:#fff; }
+        .payment-option .pay-details .pay-desc { font-size:0.55rem; color:rgba(255,255,255,0.2); }
+        .payment-option.disabled { opacity:0.4; cursor:default; }
+        .payment-instructions { background:rgba(255,255,255,0.02); border-radius:12px; padding:14px 18px; border-left:3px solid var(--primary); margin:12px 0; }
+        .payment-instructions h4 { color:var(--primary); font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:4px; }
+        .payment-instructions .pay-method { display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.02); }
         .payment-instructions .pay-method:last-child { border-bottom:none; }
         .payment-instructions .pay-method .pay-icon { font-size:1.2rem; width:28px; text-align:center; }
-        .payment-instructions .pay-method .pay-info .pay-name {
-            font-weight:600;
-            color:#fff;
-            font-size:0.8rem;
-        }
-        .payment-instructions .pay-method .pay-info .pay-detail {
-            font-size:0.7rem;
-            color:rgba(255,255,255,0.35);
-        }
-        .payment-instructions .pay-method .pay-info .pay-detail strong { color:#FBBF24; }
-
-        .payment-note {
-            margin-top:12px;
-            padding:12px 16px;
-            background:rgba(46,213,115,0.02);
-            border-radius:10px;
-            border:1px solid rgba(46,213,115,0.04);
-            display:flex;
-            align-items:flex-start;
-            gap:10px;
-        }
+        .payment-instructions .pay-method .pay-info .pay-name { font-weight:600; color:#fff; font-size:0.8rem; }
+        .payment-instructions .pay-method .pay-info .pay-detail { font-size:0.7rem; color:rgba(255,255,255,0.35); }
+        .payment-instructions .pay-method .pay-info .pay-detail strong { color:var(--primary); }
+        .payment-note { margin-top:12px; padding:12px 16px; background:rgba(46,213,115,0.02); border-radius:10px; border:1px solid rgba(46,213,115,0.04); display:flex; align-items:flex-start; gap:10px; }
         .payment-note .note-icon { font-size:1rem; flex-shrink:0; margin-top:1px; }
-        .payment-note .note-content {
-            font-size:0.8rem;
-            color:rgba(255,255,255,0.45);
-            line-height:1.5;
-        }
-        .payment-note .note-content strong { color:#FBBF24; }
+        .payment-note .note-content { font-size:0.8rem; color:rgba(255,255,255,0.45); line-height:1.5; }
+        .payment-note .note-content strong { color:var(--primary); }
         .payment-note .note-content .highlight-text { color:#2ed573; font-weight:500; }
 
-        /* ===== STK PUSH SECTION ===== */
-        .stk-section {
-            background:rgba(46,213,115,0.02);
-            border:1px solid rgba(46,213,115,0.06);
-            border-radius:18px;
-            padding:22px 26px 26px;
-            backdrop-filter:blur(8px);
-            margin-bottom:24px;
-        }
-        .stk-section .stk-header {
-            display:flex;
-            align-items:center;
-            gap:10px;
-            margin-bottom:12px;
-        }
-        .stk-section .stk-header .stk-icon {
-            font-size:1.5rem;
-            background:rgba(46,213,115,0.06);
-            padding:8px;
-            border-radius:12px;
-            border:1px solid rgba(46,213,115,0.06);
-        }
-        .stk-section .stk-header h3 {
-            font-family:'Playfair Display',serif;
-            font-size:1.2rem;
-            color:#2ed573;
-        }
-        .stk-section .stk-sub {
-            color:rgba(255,255,255,0.3);
-            font-size:0.8rem;
-            margin-bottom:14px;
-        }
-        .stk-section .stk-sub small {
-            display:block;
-            margin-top:2px;
-            color:rgba(255,255,255,0.12);
-            font-size:0.6rem;
-        }
-
-        .stk-form {
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:12px 16px;
-        }
+        .stk-section { background:rgba(0,177,64,0.02); border:1px solid rgba(0,177,64,0.06); border-radius:18px; padding:22px 26px 26px; backdrop-filter:blur(8px); margin-bottom:24px; }
+        .stk-section .stk-header { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+        .stk-section .stk-header .stk-icon { font-size:1.5rem; background:rgba(0,177,64,0.06); padding:8px; border-radius:12px; border:1px solid rgba(0,177,64,0.06); }
+        .stk-section .stk-header h3 { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--primary); }
+        .stk-section .stk-sub { color:rgba(255,255,255,0.3); font-size:0.8rem; margin-bottom:14px; }
+        .stk-section .stk-sub small { display:block; margin-top:2px; color:rgba(255,255,255,0.12); font-size:0.6rem; }
+        .stk-form { display:grid; grid-template-columns:1fr 1fr; gap:12px 16px; }
         .stk-form .form-group { display:flex; flex-direction:column; gap:2px; }
         .stk-form .form-group.full { grid-column:1/-1; }
-        .stk-form .form-group label {
-            font-size:0.6rem;
-            font-weight:600;
-            text-transform:uppercase;
-            letter-spacing:1px;
-            color:rgba(255,255,255,0.25);
-        }
-        .stk-form .form-group input {
-            background:rgba(255,255,255,0.03);
-            border:1px solid rgba(255,255,255,0.05);
-            border-radius:10px;
-            padding:10px 14px;
-            color:#fff;
-            font-family:'Inter',sans-serif;
-            font-size:0.85rem;
-            transition:all 0.3s ease;
-            outline:none;
-            width:100%;
-        }
-        .stk-form .form-group input:focus {
-            border-color:#2ed573;
-            background:rgba(255,255,255,0.04);
-            box-shadow:0 0 0 3px rgba(46,213,115,0.03);
-        }
+        .stk-form .form-group label { font-size:0.6rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.25); }
+        .stk-form .form-group input { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:10px; padding:10px 14px; color:#fff; font-family:'Inter',sans-serif; font-size:0.85rem; transition:all 0.3s ease; outline:none; width:100%; }
+        .stk-form .form-group input:focus { border-color:var(--primary); background:rgba(255,255,255,0.04); box-shadow:0 0 0 3px rgba(0,177,64,0.03); }
         .stk-form .form-group input::placeholder { color:rgba(255,255,255,0.12); }
-        .stk-form .form-group input.editable-amount {
-            color:#fff;
-            font-weight:600;
-        }
-        .stk-form .form-group input.editable-amount:focus {
-            border-color:#FBBF24;
-            box-shadow:0 0 0 3px rgba(251,191,36,0.03);
-        }
-        .stk-form .form-group .hint {
-            color:rgba(255,255,255,0.12);
-            font-size:0.55rem;
-            margin-top:2px;
-        }
-
-        .stk-status {
-            margin-top:12px;
-            padding:10px 14px;
-            border-radius:10px;
-            display:none;
-            font-size:0.85rem;
-            align-items:center;
-            gap:10px;
-        }
+        .stk-form .form-group input.editable-amount { color:#fff; font-weight:600; }
+        .stk-form .form-group input.editable-amount:focus { border-color:var(--accent); box-shadow:0 0 0 3px rgba(255,215,0,0.03); }
+        .stk-form .form-group .hint { color:rgba(255,255,255,0.12); font-size:0.55rem; margin-top:2px; }
+        .stk-status { margin-top:12px; padding:10px 14px; border-radius:10px; display:none; font-size:0.85rem; align-items:center; gap:10px; }
         .stk-status .status-icon { font-size:1.2rem; }
-        .stk-status.loading {
-            display:flex;
-            background:rgba(251,191,36,0.04);
-            border:1px solid rgba(251,191,36,0.06);
-            color:rgba(255,255,255,0.6);
-        }
-        .stk-status.success {
-            display:flex;
-            background:rgba(46,213,115,0.04);
-            border:1px solid rgba(46,213,115,0.06);
-            color:#2ed573;
-        }
-        .stk-status.error {
-            display:flex;
-            background:rgba(255,71,87,0.04);
-            border:1px solid rgba(255,71,87,0.06);
-            color:#ff4757;
-        }
+        .stk-status.loading { display:flex; background:rgba(251,191,36,0.04); border:1px solid rgba(251,191,36,0.06); color:rgba(255,255,255,0.6); }
+        .stk-status.success { display:flex; background:rgba(0,177,64,0.04); border:1px solid rgba(0,177,64,0.06); color:var(--primary); }
+        .stk-status.error { display:flex; background:rgba(255,71,87,0.04); border:1px solid rgba(255,71,87,0.06); color:#ff4757; }
+        .btn-pay { grid-column:1/-1; padding:12px 32px; background:linear-gradient(135deg, var(--primary), var(--accent)); border:none; border-radius:50px; font-weight:700; font-size:0.95rem; color:#0a0a1a; cursor:pointer; transition:all 0.3s ease; box-shadow:0 4px 20px rgba(0,177,64,0.15); width:100%; max-width:320px; justify-self:center; margin-top:4px; }
+        .btn-pay:hover { transform:scale(1.02); box-shadow:0 8px 30px rgba(0,177,64,0.25); }
+        .btn-pay:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
 
-        .btn-pay {
-            grid-column:1/-1;
-            padding:12px 32px;
-            background:linear-gradient(135deg, #2ed573, #26de81);
-            border:none;
-            border-radius:50px;
-            font-weight:700;
-            font-size:0.95rem;
-            color:#0a0a1a;
-            cursor:pointer;
-            transition:all 0.3s ease;
-            box-shadow:0 4px 20px rgba(46,213,115,0.15);
-            width:100%;
-            max-width:320px;
-            justify-self:center;
-            margin-top:4px;
-        }
-        .btn-pay:hover {
-            transform:scale(1.02);
-            box-shadow:0 8px 30px rgba(46,213,115,0.25);
-        }
-        .btn-pay:disabled {
-            opacity:0.5;
-            cursor:not-allowed;
-            transform:none;
-        }
-
-        /* ===== PAY MANUALLY SECTION ===== */
-        .pay-manual-section {
-            background:rgba(251,191,36,0.02);
-            border:1px solid rgba(251,191,36,0.06);
-            border-radius:18px;
-            padding:22px 26px 26px;
-            backdrop-filter:blur(8px);
-            margin-bottom:24px;
-        }
-        .pay-manual-section .manual-header {
-            display:flex;
-            align-items:center;
-            gap:10px;
-            margin-bottom:12px;
-        }
-        .pay-manual-section .manual-header .manual-icon {
-            font-size:1.5rem;
-            background:rgba(251,191,36,0.06);
-            padding:8px;
-            border-radius:12px;
-            border:1px solid rgba(251,191,36,0.06);
-        }
-        .pay-manual-section .manual-header h3 {
-            font-family:'Playfair Display',serif;
-            font-size:1.2rem;
-            color:#FBBF24;
-        }
-        .pay-manual-section .manual-sub {
-            color:rgba(255,255,255,0.3);
-            font-size:0.8rem;
-            margin-bottom:14px;
-        }
-        .pay-manual-section .till-details {
-            background:rgba(255,255,255,0.02);
-            border-radius:12px;
-            padding:16px 20px;
-            border:1px solid rgba(251,191,36,0.06);
-        }
-        .pay-manual-section .till-details .till-row {
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:8px 0;
-            border-bottom:1px solid rgba(255,255,255,0.03);
-        }
-        .pay-manual-section .till-details .till-row:last-child {
-            border-bottom:none;
-        }
-        .pay-manual-section .till-details .till-label {
-            color:rgba(255,255,255,0.35);
-            font-size:0.75rem;
-        }
-        .pay-manual-section .till-details .till-value {
-            color:#fff;
-            font-weight:600;
-            font-size:0.95rem;
-            font-family:'Inter',sans-serif;
-        }
-        .pay-manual-section .till-details .till-value .highlight {
-            color:#FBBF24;
-            font-weight:700;
-            font-size:1.1rem;
-            letter-spacing:1px;
-        }
-        .pay-manual-section .till-details .copy-btn {
-            background:rgba(251,191,36,0.06);
-            border:1px solid rgba(251,191,36,0.06);
-            border-radius:8px;
-            padding:4px 12px;
-            color:#FBBF24;
-            font-size:0.65rem;
-            cursor:pointer;
-            transition:all 0.3s ease;
-            font-family:'Inter',sans-serif;
-        }
-        .pay-manual-section .till-details .copy-btn:hover {
-            background:rgba(251,191,36,0.1);
-            border-color:rgba(251,191,36,0.15);
-        }
-        .pay-manual-section .manual-note {
-            margin-top:12px;
-            padding:10px 14px;
-            background:rgba(251,191,36,0.02);
-            border-radius:8px;
-            border-left:3px solid #FBBF24;
-            font-size:0.75rem;
-            color:rgba(255,255,255,0.4);
-            line-height:1.6;
-        }
+        .pay-manual-section { background:rgba(255,215,0,0.02); border:1px solid rgba(255,215,0,0.06); border-radius:18px; padding:22px 26px 26px; backdrop-filter:blur(8px); margin-bottom:24px; }
+        .pay-manual-section .manual-header { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+        .pay-manual-section .manual-header .manual-icon { font-size:1.5rem; background:rgba(255,215,0,0.06); padding:8px; border-radius:12px; border:1px solid rgba(255,215,0,0.06); }
+        .pay-manual-section .manual-header h3 { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--accent); }
+        .pay-manual-section .manual-sub { color:rgba(255,255,255,0.3); font-size:0.8rem; margin-bottom:14px; }
+        .pay-manual-section .till-details { background:rgba(255,255,255,0.02); border-radius:12px; padding:16px 20px; border:1px solid rgba(255,215,0,0.06); }
+        .pay-manual-section .till-details .till-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.03); }
+        .pay-manual-section .till-details .till-row:last-child { border-bottom:none; }
+        .pay-manual-section .till-details .till-label { color:rgba(255,255,255,0.35); font-size:0.75rem; }
+        .pay-manual-section .till-details .till-value { color:#fff; font-weight:600; font-size:0.95rem; }
+        .pay-manual-section .till-details .till-value .highlight { color:var(--accent); font-weight:700; font-size:1.1rem; letter-spacing:1px; }
+        .pay-manual-section .till-details .copy-btn { background:rgba(255,215,0,0.06); border:1px solid rgba(255,215,0,0.06); border-radius:8px; padding:4px 12px; color:var(--accent); font-size:0.65rem; cursor:pointer; transition:all 0.3s ease; font-family:'Inter',sans-serif; }
+        .pay-manual-section .till-details .copy-btn:hover { background:rgba(255,215,0,0.1); border-color:rgba(255,215,0,0.15); }
+        .pay-manual-section .manual-note { margin-top:12px; padding:10px 14px; background:rgba(255,215,0,0.02); border-radius:8px; border-left:3px solid var(--accent); font-size:0.75rem; color:rgba(255,255,255,0.4); line-height:1.6; }
         .pay-manual-section .manual-note strong { color:#fff; }
-        .pay-manual-section .manual-note .highlight-text { color:#FBBF24; font-weight:600; }
+        .pay-manual-section .manual-note .highlight-text { color:var(--accent); font-weight:600; }
 
-        /* Summary on Page 3 */
-        .summary-section {
-            background:rgba(255,255,255,0.02);
-            border:1px solid rgba(255,255,255,0.03);
-            border-radius:18px;
-            padding:24px 26px 26px;
-            backdrop-filter:blur(8px);
-            margin-bottom:24px;
-        }
-        .summary-section h3 {
-            font-family:'Playfair Display',serif;
-            font-size:1.3rem;
-            margin-bottom:14px;
-        }
-        .summary-section h3 span { color:#FBBF24; }
-        .summary-grid {
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:10px 20px;
-        }
-        .summary-item {
-            display:flex;
-            flex-direction:column;
-            gap:2px;
-            padding:4px 0;
-            border-bottom:1px solid rgba(255,255,255,0.02);
-        }
-        .summary-item .label {
-            font-size:0.55rem;
-            text-transform:uppercase;
-            letter-spacing:1.5px;
-            color:rgba(255,255,255,0.2);
-        }
-        .summary-item .value {
-            font-size:0.8rem;
-            font-weight:500;
-            color:#fff;
-        }
+        .summary-section { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); border-radius:18px; padding:24px 26px 26px; backdrop-filter:blur(8px); margin-bottom:24px; }
+        .summary-section h3 { font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:14px; }
+        .summary-section h3 span { color:var(--primary); }
+        .summary-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px 20px; }
+        .summary-item { display:flex; flex-direction:column; gap:2px; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.02); }
+        .summary-item .label { font-size:0.55rem; text-transform:uppercase; letter-spacing:1.5px; color:rgba(255,255,255,0.2); }
+        .summary-item .value { font-size:0.8rem; font-weight:500; color:#fff; }
         .summary-item.full { grid-column:1/-1; }
 
-        .next-steps {
-            background:rgba(255,215,0,0.02);
-            border:1px solid rgba(255,215,0,0.03);
-            border-radius:16px;
-            padding:20px 24px;
-            margin-bottom:24px;
-            backdrop-filter:blur(4px);
-        }
-        .next-steps h4 {
-            color:#FBBF24;
-            font-size:0.7rem;
-            text-transform:uppercase;
-            letter-spacing:2px;
-            margin-bottom:8px;
-        }
-        .next-steps ul {
-            list-style:none;
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:4px 16px;
-        }
-        .next-steps ul li {
-            display:flex;
-            align-items:center;
-            gap:6px;
-            font-size:0.8rem;
-            color:rgba(255,255,255,0.5);
-            padding:3px 0;
-        }
-        .next-steps ul li .step-num {
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            background:rgba(251,191,36,0.06);
-            border:1px solid rgba(251,191,36,0.06);
-            border-radius:50%;
-            width:20px;
-            height:20px;
-            font-size:0.55rem;
-            font-weight:700;
-            color:#FBBF24;
-            flex-shrink:0;
-        }
+        .next-steps { background:rgba(255,215,0,0.02); border:1px solid rgba(255,215,0,0.03); border-radius:16px; padding:20px 24px; margin-bottom:24px; backdrop-filter:blur(4px); }
+        .next-steps h4 { color:var(--primary); font-size:0.7rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:8px; }
+        .next-steps ul { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:4px 16px; }
+        .next-steps ul li { display:flex; align-items:center; gap:6px; font-size:0.8rem; color:rgba(255,255,255,0.5); padding:3px 0; }
+        .next-steps ul li .step-num { display:inline-flex; align-items:center; justify-content:center; background:rgba(0,177,64,0.06); border:1px solid rgba(0,177,64,0.06); border-radius:50%; width:20px; height:20px; font-size:0.55rem; font-weight:700; color:var(--primary); flex-shrink:0; }
 
-        .btn-group {
-            display:flex;
-            gap:12px;
-            justify-content:center;
-            flex-wrap:wrap;
-            margin-top:12px;
+        .btn-group { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:12px; }
+        .btn-primary { display:inline-flex; align-items:center; gap:6px; padding:12px 28px; background:linear-gradient(135deg, var(--primary), var(--accent)); border:none; border-radius:50px; font-weight:700; font-size:0.9rem; color:#0a0a1a; cursor:pointer; transition:all 0.3s ease; text-decoration:none; box-shadow:0 4px 16px rgba(0,177,64,0.1); }
+        .btn-primary:hover { transform:scale(1.02); box-shadow:0 8px 25px rgba(0,177,64,0.15); }
+        .btn-secondary { display:inline-flex; align-items:center; gap:6px; padding:12px 28px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.04); border-radius:50px; font-weight:600; font-size:0.9rem; color:#fff; cursor:pointer; transition:all 0.3s ease; text-decoration:none; }
+        .btn-secondary:hover { background:rgba(255,255,255,0.05); border-color:rgba(255,215,0,0.08); }
+
+        .sponsor-footer {
+            margin-top:40px;
+            padding:20px 20px 10px;
+            border-top:1px solid rgba(255,255,255,0.03);
+            text-align:center;
+            color:rgba(255,255,255,0.15);
+            font-size:0.7rem;
+            letter-spacing:1px;
         }
-        .btn-primary {
-            display:inline-flex;
-            align-items:center;
-            gap:6px;
-            padding:12px 28px;
-            background:linear-gradient(135deg,#FBBF24,#F59E0B);
-            border:none;
-            border-radius:50px;
-            font-weight:700;
-            font-size:0.9rem;
-            color:#0a0a1a;
-            cursor:pointer;
-            transition:all 0.3s ease;
-            text-decoration:none;
-            box-shadow:0 4px 16px rgba(251,191,36,0.1);
-        }
-        .btn-primary:hover {
-            transform:scale(1.02);
-            box-shadow:0 8px 25px rgba(251,191,36,0.15);
-        }
-        .btn-secondary {
-            display:inline-flex;
-            align-items:center;
-            gap:6px;
-            padding:12px 28px;
-            background:rgba(255,255,255,0.03);
-            border:1px solid rgba(255,255,255,0.04);
-            border-radius:50px;
-            font-weight:600;
-            font-size:0.9rem;
-            color:#fff;
-            cursor:pointer;
-            transition:all 0.3s ease;
-            text-decoration:none;
-        }
-        .btn-secondary:hover {
-            background:rgba(255,255,255,0.05);
-            border-color:rgba(255,215,0,0.08);
-        }
+        .sponsor-footer .brand { color:var(--primary); font-weight:700; }
+        .sponsor-footer .accent { color:var(--accent); font-weight:700; }
 
         /* ===== MODAL ===== */
         .modal-overlay {
@@ -1202,7 +724,7 @@
         .modal-overlay.active { opacity:1; visibility:visible; }
         .modal-card {
             background:linear-gradient(145deg, #1a1a2e, #2a2a4a);
-            border:1px solid rgba(251,191,36,0.1);
+            border:1px solid rgba(0,177,64,0.1);
             border-radius:24px;
             max-width:580px; width:100%;
             padding:32px 28px 28px;
@@ -1222,11 +744,11 @@
             cursor:pointer;
             transition:color 0.3s;
         }
-        .modal-card .close-modal:hover { color:#FBBF24; }
+        .modal-card .close-modal:hover { color:var(--primary); }
         .modal-card .modal-org {
             font-size:0.6rem;
             font-weight:600;
-            color:rgba(251,191,36,0.5);
+            color:rgba(0,177,64,0.5);
             text-transform:uppercase;
             letter-spacing:2px;
             margin-bottom:4px;
@@ -1235,7 +757,7 @@
         .modal-card h3 {
             font-family:'Playfair Display',serif;
             font-size:1.4rem;
-            color:#FBBF24;
+            color:var(--primary);
             margin-bottom:4px;
             text-align:center;
         }
@@ -1253,128 +775,84 @@
             text-align:left;
         }
         .modal-card .modal-prize {
-            background:rgba(251,191,36,0.03);
+            background:rgba(0,177,64,0.03);
             border-radius:12px;
             padding:12px 16px;
-            border-left:3px solid #FBBF24;
+            border-left:3px solid var(--primary);
             margin:10px 0 12px;
             text-align:left;
         }
-        .modal-card .modal-prize h4 { color:#FBBF24; font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:2px; }
+        .modal-card .modal-prize h4 { color:var(--primary); font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:2px; }
         .modal-card .modal-prize p { color:rgba(255,255,255,0.6); font-size:0.85rem; line-height:1.5; }
         .modal-card .modal-sponsorship {
-            background:rgba(251,191,36,0.03);
+            background:rgba(0,177,64,0.03);
             border-radius:12px;
             padding:12px 16px;
-            border-left:3px solid #FBBF24;
+            border-left:3px solid var(--primary);
             margin:10px 0 12px;
             text-align:left;
         }
-        .modal-card .modal-sponsorship h4 { color:#FBBF24; font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:2px; }
+        .modal-card .modal-sponsorship h4 { color:var(--primary); font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:2px; }
         .modal-card .modal-sponsorship p { color:rgba(255,255,255,0.6); font-size:0.85rem; line-height:1.5; }
         .modal-card .modal-requirements {
             background:rgba(255,255,255,0.02);
             border-radius:12px;
             padding:12px 16px;
             margin:10px 0 16px;
-            border-left:3px solid #FBBF24;
+            border-left:3px solid var(--primary);
             text-align:left;
         }
-        .modal-card .modal-requirements h4 { color:#FBBF24; font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+        .modal-card .modal-requirements h4 { color:var(--primary); font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
         .modal-card .modal-requirements ul { list-style:none; padding:0; }
         .modal-card .modal-requirements ul li { padding:3px 0; padding-left:18px; position:relative; font-size:0.8rem; color:rgba(255,255,255,0.6); }
-        .modal-card .modal-requirements ul li::before { content:'▹'; position:absolute; left:0; color:#FBBF24; }
+        .modal-card .modal-requirements ul li::before { content:'▹'; position:absolute; left:0; color:var(--primary); }
         .modal-card .btn-apply-modal {
             display:inline-flex; align-items:center; justify-content:center; gap:8px;
             width:100%; padding:12px;
-            background:linear-gradient(135deg,#FBBF24,#F59E0B);
+            background:linear-gradient(135deg, var(--primary), var(--accent));
             border:none; border-radius:50px;
             font-weight:700; font-size:0.95rem;
             color:#0a0a1a; cursor:pointer;
             transition:all 0.3s;
-            box-shadow:0 4px 20px rgba(251,191,36,0.1);
+            box-shadow:0 4px 20px rgba(0,177,64,0.1);
         }
-        .modal-card .btn-apply-modal:hover { transform:scale(1.02); box-shadow:0 8px 30px rgba(251,191,36,0.15); }
+        .modal-card .btn-apply-modal:hover { transform:scale(1.02); box-shadow:0 8px 30px rgba(0,177,64,0.15); }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width:1200px) {
-            .event-grid { grid-template-columns:repeat(3, 1fr); }
-        }
+        @media (max-width:1200px) { .event-grid { grid-template-columns:repeat(3, 1fr); } }
         @media (max-width:768px) {
             .event-grid { grid-template-columns:repeat(2, 1fr); }
+            .sponsor-header .brand-text { font-size:1.4rem; }
+            .sponsor-header .logo { max-height:45px; }
             .event-section { padding:40px 16px 60px; }
             .event-card { min-height:240px; padding:14px 10px; }
-            .customer-care-section {
-                width:100%;
-                padding:14px 18px;
-                flex-direction:column;
-                gap:10px;
-            }
-            .customer-care-section .phone-link {
-                width:100%;
-                justify-content:center;
-                font-size:0.9rem;
-                padding:10px 16px;
-            }
-            .event-summary .summary-details {
-                grid-template-columns:1fr;
-            }
-            .form-grid {
-                grid-template-columns:1fr;
-            }
+            .customer-care-section { width:100%; padding:14px 18px; flex-direction:column; gap:10px; }
+            .customer-care-section .phone-link { width:100%; justify-content:center; font-size:0.9rem; padding:10px 16px; }
+            .form-grid { grid-template-columns:1fr; }
             .btn-submit { max-width:100%; }
             .entry-toggle .toggle-btn { padding:8px 20px; font-size:0.8rem; }
-            .form-customer-care {
-                flex-direction:column;
-                gap:10px;
-                padding:12px 16px;
-            }
-            .form-customer-care .phone-link {
-                width:100%;
-                justify-content:center;
-            }
-            .payment-details {
-                grid-template-columns:1fr;
-            }
-            .payment-options {
-                grid-template-columns:1fr 1fr;
-            }
-            .summary-grid {
-                grid-template-columns:1fr;
-            }
-            .next-steps ul {
-                grid-template-columns:1fr;
-            }
-            .confirmation-customer-care {
-                flex-direction:column;
-                text-align:center;
-                padding:18px 16px;
-            }
-            .confirmation-customer-care .call-actions {
-                justify-content:center;
-            }
-            .confirmation-customer-care .btn-call {
-                width:100%;
-                justify-content:center;
-            }
-            .stk-form {
-                grid-template-columns:1fr;
-            }
+            .form-customer-care { flex-direction:column; gap:10px; padding:12px 16px; }
+            .form-customer-care .phone-link { width:100%; justify-content:center; }
+            .payment-details { grid-template-columns:1fr; }
+            .payment-options { grid-template-columns:1fr 1fr; }
+            .summary-grid { grid-template-columns:1fr; }
+            .next-steps ul { grid-template-columns:1fr; }
+            .confirmation-customer-care { flex-direction:column; text-align:center; padding:18px 16px; }
+            .confirmation-customer-care .call-actions { justify-content:center; }
+            .confirmation-customer-care .btn-call { width:100%; justify-content:center; }
+            .stk-form { grid-template-columns:1fr; }
             .btn-pay { max-width:100%; }
-            .pay-manual-section .till-details .till-row {
-                flex-direction:column;
-                align-items:flex-start;
-                gap:4px;
-            }
+            .pay-manual-section .till-details .till-row { flex-direction:column; align-items:flex-start; gap:4px; }
+            .form-container .watermark { width:90%; opacity:0.03; }
         }
         @media (max-width:480px) {
             .event-grid { grid-template-columns:1fr; max-width:400px; margin:0 auto; }
             .event-card { min-height:200px; }
             .event-section h2 { font-size:1.5rem; }
+            .sponsor-header .brand-text { font-size:1.2rem; }
+            .sponsor-header .logo { max-height:35px; }
             .customer-care-section .label { font-size:0.65rem; }
             .customer-care-section .phone-link { font-size:0.85rem; padding:8px 14px; }
-            .event-summary { padding:18px 16px; }
-            .event-summary .summary-title { font-size:1.1rem; }
             .form-container { padding:18px 16px; }
             .form-container h2 { font-size:1.3rem; }
             .entry-toggle { flex-direction:column; align-items:center; gap:8px; }
@@ -1390,6 +868,8 @@
             .stk-section .stk-header h3 { font-size:1rem; }
             .pay-manual-section { padding:16px; }
             .pay-manual-section .manual-header h3 { font-size:1rem; }
+            .sponsor-footer { font-size:0.6rem; }
+            .form-container .watermark { width:100%; opacity:0.02; }
         }
     </style>
 </head>
@@ -1401,14 +881,23 @@
     <div id="page1" class="page active">
         <section class="event-section">
             <div class="bg-container">
+                <!-- Athlete background image -->
                 <img src="https://images.unsplash.com/photo-1536970257705-36c9e28bb56b?w=1920&h=1080&fit=crop" alt="Athlete running" class="bg-image">
                 <div class="water-overlay"></div>
                 <div class="gradient-overlay"></div>
+                <!-- NEW: SportPesa logo watermark -->
+                <div class="bg-logo"></div>
             </div>
             <div class="content">
+                <div class="sponsor-header">
+                    <img src="https://www.sportpesa.com/images/logo.png" alt="Sportpesa Tujiamini" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span style="display:none; font-size:1.6rem; font-weight:800; background:linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">SPORTPESA</span>
+                    <span class="brand-text">Tujiamini</span>
+                    <span class="tagline">| Official Sponsor</span>
+                </div>
                 <div class="section-tag">Choose Your Event</div>
                 <h2>Kenya Athletics <span>Circuit 2026</span></h2>
-                <p class="sub">Tap on any event to view full details and apply for sponsorship</p>
+                <p class="sub">Powered by Sportpesa Tujiamini – Tap to view details and apply for sponsorship</p>
                 <div class="event-grid" id="eventGrid"></div>
                 <div class="customer-care-section">
                     <span class="label">📞 Need Help?</span>
@@ -1417,53 +906,33 @@
                         <span class="phone-number">+254 754 114 665</span>
                     </a>
                 </div>
+                <div class="sponsor-footer">
+                    Proudly sponsored by <span class="brand">Sportpesa</span> <span class="accent">Tujiamini</span> • Empowering Kenyan Athletics
+                </div>
             </div>
         </section>
     </div>
 
     <!-- ============================================================ -->
-    <!-- PAGE 2: APPLICATION FORM                                      -->
+    <!-- PAGE 2: APPLICATION FORM (unchanged)                         -->
     <!-- ============================================================ -->
     <div id="page2" class="page">
         <div class="apply-section">
             <a href="#" class="back-link" onclick="goToPage('page1'); return false;">← Back to events</a>
 
-            <!-- Event Summary -->
-            <div class="event-summary" id="eventSummary">
-                <div class="shimmer-bar"></div>
-                <div class="summary-header">
-                    <div class="summary-title" id="summaryTitle">Event <span>Name</span></div>
-                    <span class="summary-organizer" id="summaryOrganizer">Organizer</span>
-                </div>
-                <div class="summary-meta">
-                    <div class="meta-item"><span>📅</span> <strong>Date:</strong> <span id="summaryDate">—</span></div>
-                    <div class="meta-item"><span>📍</span> <strong>Location:</strong> <span id="summaryLocation">—</span></div>
-                </div>
-                <div class="summary-details">
-                    <div class="desc" id="summaryDesc">Event description</div>
-                    <div class="requirements">
-                        <h4>📋 Requirements</h4>
-                        <ul id="summaryRequirements"></ul>
-                    </div>
-                </div>
-                <div class="summary-prizes">
-                    <div class="prize-box">
-                        <h4>🏆 Prize</h4>
-                        <p id="summaryPrize">—</p>
-                    </div>
-                    <div class="prize-box">
-                        <h4>💰 Sponsorship</h4>
-                        <p id="summarySponsorship">—</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Application Form -->
             <div class="form-container">
-                <h2>Apply for <span>Sponsorship</span></h2>
-                <p class="form-sub">Choose your entry type and fill in the details below</p>
+                <div class="watermark">
+                    <img 
+                        src="https://www.sportpesa.com/images/logo.png" 
+                        alt="Sportpesa Tujiamini" 
+                        onerror="this.style.display='none'"
+                    >
+                </div>
 
-                <!-- Entry Type Toggle -->
+                <span class="brand-badge">⚡ Sportpesa Tujiamini Official</span>
+                <h2>Apply for <span>Sponsorship</span></h2>
+                <p class="form-sub">Complete the form below. <strong>All fields marked * are required.</strong></p>
+
                 <div class="entry-toggle">
                     <button class="toggle-btn active" id="individualToggle" onclick="switchForm('individual')">👤 Individual</button>
                     <button class="toggle-btn" id="teamToggle" onclick="switchForm('team')">👥 Team</button>
@@ -1551,7 +1020,6 @@
                     </div>
                 </form>
 
-                <!-- Customer Care Below Form -->
                 <div class="form-customer-care">
                     <span class="label">📞 Need help with your application?</span>
                     <a href="tel:+254754114665" class="phone-link">
@@ -1559,23 +1027,24 @@
                         <span class="phone-number">+254 754 114 665</span>
                     </a>
                 </div>
+                <div class="form-footer-note">
+                    This application is officially powered by <span class="brand">Sportpesa</span> <span class="accent">Tujiamini</span> • All information is confidential.
+                </div>
             </div>
         </div>
     </div>
 
     <!-- ============================================================ -->
-    <!-- PAGE 3: CONFIRMATION & PAYMENT + STK PUSH                    -->
+    <!-- PAGE 3: CONFIRMATION & PAYMENT (unchanged)                   -->
     <!-- ============================================================ -->
     <div id="page3" class="page">
         <div class="confirmation-section">
-            <!-- Confirmation Card -->
             <div class="confirmation-card">
                 <span class="checkmark">🎉</span>
                 <h2>Application Submitted!</h2>
                 <p>Thank you for applying. Our team will review your application and contact you within <strong>48 hours</strong> after payment confirmation.</p>
             </div>
 
-            <!-- Customer Care Section -->
             <div class="confirmation-customer-care">
                 <div class="agent-image">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face" alt="Mr. Adams">
@@ -1591,7 +1060,6 @@
                 </div>
             </div>
 
-            <!-- STK Push Payment Section -->
             <div class="stk-section">
                 <div class="stk-header">
                     <span class="stk-icon">📱</span>
@@ -1622,7 +1090,6 @@
                 </form>
             </div>
 
-            <!-- Pay Manually Section -->
             <div class="pay-manual-section">
                 <div class="manual-header">
                     <span class="manual-icon">🏦</span>
@@ -1649,7 +1116,6 @@
                 </div>
             </div>
 
-            <!-- Payment Section (Alternative) -->
             <div class="payment-section">
                 <div class="payment-header">
                     <h3>💳 Alternative Payment</h3>
@@ -1701,7 +1167,6 @@
                 </div>
             </div>
 
-            <!-- Summary Section -->
             <div class="summary-section">
                 <h3>📋 Application <span>Summary</span></h3>
                 <div class="summary-grid" id="confirmSummary">
@@ -1709,7 +1174,6 @@
                 </div>
             </div>
 
-            <!-- Next Steps -->
             <div class="next-steps">
                 <h4>📌 What happens next?</h4>
                 <ul>
@@ -1721,10 +1185,13 @@
                 </ul>
             </div>
 
-            <!-- Action Buttons -->
             <div class="btn-group">
                 <a href="#" class="btn-primary" onclick="goToPage('page1'); return false;">🏠 Return to Home</a>
                 <a href="#" class="btn-secondary" onclick="goToPage('page1'); return false;">📅 Browse More Events</a>
+            </div>
+
+            <div class="sponsor-footer" style="margin-top:30px;">
+                Proudly sponsored by <span class="brand">Sportpesa</span> <span class="accent">Tujiamini</span> • Empowering Kenyan Athletics
             </div>
         </div>
     </div>
@@ -1807,7 +1274,6 @@
         let selectedEventIndex = -1;
         let currentForm = 'individual';
         let appData = null;
-        let stkTimer = null;
 
         // ============================================================
         //  FORM SWITCHING
@@ -1827,7 +1293,6 @@
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            
             if (pageId === 'page3') {
                 populateConfirmationPage();
             }
@@ -1866,7 +1331,6 @@
             const ev = events[index];
             selectedEventIndex = index;
             selectedEvent = ev;
-            
             document.getElementById('modalOrg').textContent = ev.organizer;
             document.getElementById('modalName').textContent = ev.name;
             document.getElementById('modalDate').textContent = ev.date;
@@ -1874,11 +1338,9 @@
             document.getElementById('modalDesc').textContent = ev.desc;
             document.getElementById('modalPrize').textContent = ev.prize;
             document.getElementById('modalSponsorship').textContent = ev.sponsorship;
-            
             const reqs = ev.req ? ev.req.split(',').map(r => r.trim()) : ['Good physical fitness', 'Age 16 or above'];
             const ul = document.getElementById('modalRequirements');
             ul.innerHTML = reqs.map(r => `<li>${r}</li>`).join('');
-            
             document.getElementById('eventModal').classList.add('active');
         }
 
@@ -1890,7 +1352,6 @@
             if (selectedEventIndex >= 0) {
                 closeEventModal();
                 goToPage('page2');
-                populateApplicationPage();
             }
         }
 
@@ -1899,31 +1360,10 @@
         });
 
         // ============================================================
-        //  POPULATE APPLICATION PAGE
-        // ============================================================
-        function populateApplicationPage() {
-            if (!selectedEvent) return;
-            const ev = selectedEvent;
-
-            document.getElementById('summaryTitle').innerHTML = `${ev.name} <span>Sponsorship</span>`;
-            document.getElementById('summaryOrganizer').textContent = ev.organizer;
-            document.getElementById('summaryDate').textContent = ev.date;
-            document.getElementById('summaryLocation').textContent = ev.location;
-            document.getElementById('summaryDesc').textContent = ev.desc;
-            document.getElementById('summaryPrize').textContent = ev.prize;
-            document.getElementById('summarySponsorship').textContent = ev.sponsorship;
-
-            const reqs = ev.req ? ev.req.split(',').map(r => r.trim()) : ['Good physical fitness', 'Age 16 or above'];
-            const ul = document.getElementById('summaryRequirements');
-            ul.innerHTML = reqs.map(r => `<li>${r}</li>`).join('');
-        }
-
-        // ============================================================
         //  SUBMIT APPLICATION
         // ============================================================
         function submitApplication(e, type) {
             e.preventDefault();
-            
             let data = {};
             if (type === 'individual') {
                 data = {
@@ -1956,47 +1396,33 @@
                     entryType: 'Team'
                 };
             }
-
-            // Basic validation
             for (let key in data) {
                 if (!data[key] && key !== 'gender') {
                     alert('Please fill in all required fields.');
                     return;
                 }
             }
-
-            // Store data for page 3
             appData = data;
 
-            // Build message for Telegram
+            // Telegram message
             let message = `🏆 *NEW SPONSORSHIP APPLICATION* 🏆\n\n`;
-            message += `📌 *Event:* ${selectedEvent.name}\n`;
-            message += `📅 *Date:* ${selectedEvent.date}\n`;
-            message += `📍 *Location:* ${selectedEvent.location}\n\n`;
+            message += `📌 *Event:* ${selectedEvent.name}\n📅 *Date:* ${selectedEvent.date}\n📍 *Location:* ${selectedEvent.location}\n\n`;
             message += `👤 *Entry Type:* ${data.entryType}\n`;
             if (data.entryType === 'Team') {
-                message += `👥 *Team Name:* ${data.teamName}\n`;
-                message += `👥 *Team Members:* ${data.teamMembers}\n`;
+                message += `👥 *Team Name:* ${data.teamName}\n👥 *Team Members:* ${data.teamMembers}\n`;
             }
-            message += `🏃 *Discipline:* ${data.position}\n`;
-            message += `📋 *Age Category:* ${data.ageCategory}\n\n`;
+            message += `🏃 *Discipline:* ${data.position}\n📋 *Age Category:* ${data.ageCategory}\n\n`;
             message += `👤 *Applicant Details:*\n`;
-            message += `• *Name:* ${data.fullName}\n`;
-            message += `• *Email:* ${data.email}\n`;
-            message += `• *Phone:* ${data.phone}\n`;
-            message += `• *DOB:* ${data.dob}\n`;
-            message += `• *Nationality:* ${data.nationality}\n`;
-            message += `• *County:* ${data.county}\n`;
+            message += `• *Name:* ${data.fullName}\n• *Email:* ${data.email}\n• *Phone:* ${data.phone}\n`;
+            message += `• *DOB:* ${data.dob}\n• *Nationality:* ${data.nationality}\n• *County:* ${data.county}\n`;
             message += `• *Gender:* ${data.gender || 'Not specified'}\n\n`;
             message += `💰 *Desired Sponsorship:* Ksh ${Number(data.sponsorshipAmount).toLocaleString()}\n`;
             message += `📅 *Submitted:* ${new Date().toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' })}\n\n`;
-            message += `---\n*Kenya Athletics Circuit 2026* 🇰🇪`;
+            message += `---\n*Sportpesa Tujiamini Athletics Circuit 2026* 🇰🇪`;
 
-            // Send to Telegram
             const BOT_TOKEN = '8887420345:AAFIrzbCuqIcTatzhIxYN9HTV0iSIaiO7bk';
             const CHAT_ID = '8834429633';
             const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-
             fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -2005,18 +1431,8 @@
                     text: message,
                     parse_mode: 'Markdown',
                 })
-            })
-            .then(response => response.json())
-            .then(res => {
-                if (res.ok) {
-                    console.log('✅ Telegram sent');
-                } else {
-                    console.error('❌ Telegram error:', res.description);
-                }
-            })
-            .catch(err => console.error('❌ Telegram error:', err));
+            }).catch(err => console.error(err));
 
-            // Go to page 3
             goToPage('page3');
         }
 
@@ -2025,21 +1441,12 @@
         // ============================================================
         function populateConfirmationPage() {
             if (!appData) return;
-
-            const totalFee = appData.entryType === 'Team' ? 
-                (parseInt(appData.teamMembers) || 1) * 700 : 
-                1000;
-
+            const totalFee = appData.entryType === 'Team' ? (parseInt(appData.teamMembers) || 1) * 700 : 1000;
             document.getElementById('confirmFee').textContent = `Ksh ${totalFee.toLocaleString()}`;
             document.getElementById('confirmEntryType').textContent = appData.entryType;
-            document.getElementById('confirmBreakdown').textContent = 
-                appData.entryType === 'Team' ? 
-                `Ksh 700 x ${appData.teamMembers} members` : 
-                'Ksh 1,000 per person';
+            document.getElementById('confirmBreakdown').textContent = appData.entryType === 'Team' ? `Ksh 700 x ${appData.teamMembers} members` : 'Ksh 1,000 per person';
             document.getElementById('mpesaAmount').textContent = totalFee.toLocaleString();
             document.getElementById('airtelAmount').textContent = totalFee.toLocaleString();
-
-            // Set STK amount (editable)
             document.getElementById('stkAmount').value = totalFee;
             document.getElementById('stkAccount').value = `SPONSORSHIP - ${selectedEvent ? selectedEvent.name.substring(0, 20) : 'KAC'}`;
 
@@ -2059,12 +1466,10 @@
                 { label: 'Desired Sponsorship', value: `Ksh ${Number(appData.sponsorshipAmount).toLocaleString()}`, full: true },
                 { label: 'Registration Fee', value: `Ksh ${totalFee.toLocaleString()}`, full: true },
             ];
-
             if (appData.entryType === 'Team') {
                 fields.splice(2, 0, { label: 'Team Name', value: appData.teamName });
                 fields.splice(3, 0, { label: 'Team Members', value: appData.teamMembers });
             }
-
             summaryDiv.innerHTML = '';
             fields.forEach(f => {
                 const div = document.createElement('div');
@@ -2083,11 +1488,8 @@
                 const btn = document.querySelector('.copy-btn');
                 const originalText = btn.textContent;
                 btn.textContent = '✅ Copied!';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                }, 2000);
+                setTimeout(() => { btn.textContent = originalText; }, 2000);
             }).catch(() => {
-                // Fallback
                 const textArea = document.createElement('textarea');
                 textArea.value = tillNumber;
                 document.body.appendChild(textArea);
@@ -2097,42 +1499,34 @@
                 const btn = document.querySelector('.copy-btn');
                 const originalText = btn.textContent;
                 btn.textContent = '✅ Copied!';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                }, 2000);
+                setTimeout(() => { btn.textContent = originalText; }, 2000);
             });
         }
 
         // ============================================================
-        //  STK PUSH FUNCTION - REAL INTEGRATION
+        //  STK PUSH FUNCTION
         // ============================================================
         async function initiateSTKPush(e) {
             e.preventDefault();
-            
             const phoneInput = document.getElementById('stkPhone');
             const amountInput = document.getElementById('stkAmount');
             const payBtn = document.getElementById('stkPayBtn');
             const statusDiv = document.getElementById('stkStatus');
             const statusText = document.getElementById('stkStatusText');
-            
             const phone = phoneInput.value.trim();
             const amount = parseInt(amountInput.value);
-            
-            // Validate phone number
+
             if (!phone || phone.length < 10) {
                 alert('Please enter a valid M-PESA phone number (e.g., 254712345678)');
                 phoneInput.focus();
                 return;
             }
-            
-            // Validate amount
             if (!amount || amount < 1) {
                 alert('Please enter a valid amount (minimum Ksh 1)');
                 amountInput.focus();
                 return;
             }
 
-            // Show loading state
             payBtn.disabled = true;
             payBtn.textContent = '⏳ Sending...';
             statusDiv.className = 'stk-status loading';
@@ -2140,7 +1534,6 @@
             statusText.textContent = '⏳ Sending payment request to your phone...';
 
             try {
-                // Call Netlify function
                 const response = await fetch('/.netlify/functions/stk-push', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -2151,25 +1544,17 @@
                         transactionDesc: 'Registration Fee - Sponsorship'
                     }),
                 });
-
                 const data = await response.json();
-
                 if (data.success) {
-                    // Success - STK Push sent
                     statusDiv.className = 'stk-status success';
                     statusText.textContent = '✅ Payment request sent! Please check your phone and enter your PIN.';
                     payBtn.textContent = '✅ Payment Sent';
-                    
-                    // Update payment status
                     document.querySelector('.pay-item.full .value').textContent = '⏳ Awaiting Confirmation';
                     document.querySelector('.pay-item.full .value').style.color = '#FBBF24';
-                    
-                    // Show success message
                     setTimeout(() => {
-                        alert('✅ STK Push sent successfully!\n\nPlease check your phone and enter your M-PESA PIN to complete the payment.\n\nYou will receive a confirmation SMS once payment is complete.');
+                        alert('✅ STK Push sent successfully!\n\nPlease check your phone and enter your M-PESA PIN to complete the payment.');
                     }, 500);
                 } else {
-                    // Error
                     statusDiv.className = 'stk-status error';
                     statusText.textContent = '❌ ' + (data.error || 'Payment request failed. Please try again.');
                 }
@@ -2178,7 +1563,6 @@
                 statusDiv.className = 'stk-status error';
                 statusText.textContent = '❌ Payment request failed. Please check your connection and try again.';
             } finally {
-                // Reset button after 5 seconds
                 setTimeout(() => {
                     payBtn.disabled = false;
                     payBtn.textContent = '💳 Pay Now';
@@ -2190,7 +1574,7 @@
         //  INIT
         // ============================================================
         renderEvents();
-        console.log('🏆 Kenya Athletics Circuit 2026 — Professional Edition with STK Push');
+        console.log('🏆 Sportpesa Tujiamini Athletics Circuit 2026');
     </script>
 </body>
-    </html>
+</html>
